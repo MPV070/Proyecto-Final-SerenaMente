@@ -1,73 +1,153 @@
 @use 'sass:map';
 @use '../../../styles/design.scss' as *;
 
+// ============================================
+// NAVBAR STYLES
+// ============================================
 .navbar {
+  background: white;
+  border-bottom: 1px solid rgba(map.get($palette, dark-blue), 0.08);
+  padding: 1rem 0;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+}
+
+.navbar-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 2rem;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: $spacing-sm $spacing-md;
-  background: white;
-  box-shadow: $shadow-soft;
+  gap: 3rem;
+}
+
+.navbar-brand {
+  flex-shrink: 0;
 }
 
 .logo {
   font-size: 1.5rem;
   font-weight: 700;
-  @include theme-color(color, primary);
+  color: map.get($palette, primary);
+  letter-spacing: -0.5px;
 }
 
-.menu {
+// ============================================
+// NAV MENU
+// ============================================
+.nav-menu {
   display: flex;
-  gap: $spacing-sm;
+  list-style: none;
+  gap: 2rem;
+  margin: 0;
+  padding: 0;
+  flex: 1;
 
   a {
     text-decoration: none;
+    color: rgba(map.get($palette, dark-blue), 0.7);
     font-weight: 500;
-    @include theme-color(color, dark-blue);
+    font-size: 0.95rem;
+    transition: color 0.3s ease;
+    position: relative;
 
     &:hover {
-      @include theme-color(color, aqua);
+      color: map.get($palette, primary);
+
+      &::after {
+        width: 100%;
+      }
+    }
+
+    &::after {
+      content: '';
+      position: absolute;
+      bottom: -4px;
+      left: 0;
+      width: 0;
+      height: 2px;
+      background: map.get($palette, primary);
+      transition: width 0.3s ease;
     }
   }
 }
 
-.navbar-btn {
-  padding: 0.5rem 1.25rem;
+// ============================================
+// NAV ACTIONS
+// ============================================
+.nav-actions {
+  display: flex;
+  gap: 1rem;
+  flex-shrink: 0;
+}
+
+.btn {
+  padding: 0.6rem 1.5rem;
   border-radius: $radius-md;
   font-weight: 600;
-  font-family: 'Inter', sans-serif;
-  font-size: 0.95rem;
+  font-size: 0.9rem;
   border: none;
   cursor: pointer;
-  transition: background-color 0.2s ease, box-shadow 0.2s ease;
-  box-shadow: $shadow-soft;
+  transition: all 0.3s ease;
+  font-family: 'Inter', sans-serif;
+}
 
-  &.primary {
-    @include theme-color(background-color, light-aqua);
-    @include theme-color(color, dark-blue);
+.btn-primary {
+  background: map.get($palette, primary);
+  color: white;
+  box-shadow: 0 2px 8px rgba(map.get($palette, primary), 0.2);
 
-    &:hover {
-      @include theme-color(background-color, aqua);
-    }
+  &:hover {
+    background: darken(map.get($palette, primary), 8%);
+    box-shadow: 0 4px 12px rgba(map.get($palette, primary), 0.3);
+    transform: translateY(-1px);
   }
 
-  &.secondary {
-    @include theme-color(background-color, purple);
-    @include theme-color(color, gray);
-
-    &:hover {
-      @include theme-color(background-color, teal);
-    }
-  }
-
-  &.outline {
-    background: transparent;
-    @include theme-color(color, dark-blue);
-    border: 2px solid map.get($palette, dark-blue);
-
-    &:hover {
-      background-color: rgba(map.get($palette, dark-blue), 0.1);
-    }
+  &:active {
+    transform: translateY(0);
   }
 }
+
+.btn-ghost {
+  background: transparent;
+  color: rgba(map.get($palette, dark-blue), 0.7);
+  border: 1px solid rgba(map.get($palette, dark-blue), 0.15);
+
+  &:hover {
+    background: rgba(map.get($palette, primary), 0.05);
+    color: map.get($palette, primary);
+    border-color: rgba(map.get($palette, primary), 0.2);
+  }
+}
+
+// ============================================
+// RESPONSIVE
+// ============================================
+@media (max-width: 768px) {
+  .navbar-container {
+    padding: 0 1rem;
+    gap: 1rem;
+  }
+
+  .nav-menu {
+    display: none;
+  }
+
+  .logo {
+    font-size: 1.25rem;
+  }
+
+  .nav-actions {
+    gap: 0.5rem;
+  }
+
+  .btn {
+    padding: 0.5rem 1rem;
+    font-size: 0.85rem;
+  }
+}
+
 
