@@ -1,0 +1,14 @@
+@use '../../../styles/design.scss' as *;
+
+.hero {
+  @include theme-color(background-color, light-aqua);
+  padding: 4rem 2rem;
+  border-radius: $radius-lg;
+  margin-top: $spacing-md;
+  box-shadow: $shadow-soft;
+}
+.hero h1 {
+  font-size: 2.5rem;
+  margin-bottom: $spacing-sm;
+  @include theme-color(color, dark-blue);
+}

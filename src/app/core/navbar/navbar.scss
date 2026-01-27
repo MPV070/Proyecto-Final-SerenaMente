@@ -1,0 +1,73 @@
+@use 'sass:map';
+@use '../../../styles/design.scss' as *;
+
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: $spacing-sm $spacing-md;
+  background: white;
+  box-shadow: $shadow-soft;
+}
+
+.logo {
+  font-size: 1.5rem;
+  font-weight: 700;
+  @include theme-color(color, primary);
+}
+
+.menu {
+  display: flex;
+  gap: $spacing-sm;
+
+  a {
+    text-decoration: none;
+    font-weight: 500;
+    @include theme-color(color, dark-blue);
+
+    &:hover {
+      @include theme-color(color, aqua);
+    }
+  }
+}
+
+.navbar-btn {
+  padding: 0.5rem 1.25rem;
+  border-radius: $radius-md;
+  font-weight: 600;
+  font-family: 'Inter', sans-serif;
+  font-size: 0.95rem;
+  border: none;
+  cursor: pointer;
+  transition: background-color 0.2s ease, box-shadow 0.2s ease;
+  box-shadow: $shadow-soft;
+
+  &.primary {
+    @include theme-color(background-color, light-aqua);
+    @include theme-color(color, dark-blue);
+
+    &:hover {
+      @include theme-color(background-color, aqua);
+    }
+  }
+
+  &.secondary {
+    @include theme-color(background-color, purple);
+    @include theme-color(color, gray);
+
+    &:hover {
+      @include theme-color(background-color, teal);
+    }
+  }
+
+  &.outline {
+    background: transparent;
+    @include theme-color(color, dark-blue);
+    border: 2px solid map.get($palette, dark-blue);
+
+    &:hover {
+      background-color: rgba(map.get($palette, dark-blue), 0.1);
+    }
+  }
+}
+

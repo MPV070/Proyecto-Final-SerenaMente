@@ -1,0 +1,28 @@
+@use "sass:map";
+
+$palette: (
+  primary: #069DBF,
+  dark-blue: #07235A,
+  gray: #D6D6D6,
+  aqua: #04BFAD,
+  light-aqua: #9BF5E9,
+  gold: #E4B44E,
+  purple: #80296C,
+  teal: #1E8572
+);
+
+@mixin theme-color($property, $color-name) {
+  #{$property}: map.get($palette, $color-name);
+}
+
+$radius-sm: 6px;
+$radius-md: 12px;
+$radius-lg: 20px;
+
+$shadow-soft: 0 4px 12px rgba(0, 0, 0, 0.08);
+$shadow-medium: 0 6px 20px rgba(0, 0, 0, 0.12);
+
+$spacing-xs: 0.5rem;
+$spacing-sm: 1rem;
+$spacing-md: 2rem;
+$spacing-lg: 3rem;

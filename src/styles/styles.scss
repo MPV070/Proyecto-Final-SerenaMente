@@ -1,0 +1,129 @@
+@use "sass:map";
+
+/* -----------------------------------------------------------
+   🎨 PALETA DE COLORES SERENAMENTE
+----------------------------------------------------------- */
+$palette: (
+  primary: #069DBF,      // Azul emocional
+  dark-blue: #07235A,    // Azul profundo
+  gray: #D6D6D6,         // Gris suave
+  aqua: #04BFAD,         // Verde agua
+  light-aqua: #9BF5E9,   // Verde agua claro
+  gold: #E4B44E,         // Dorado cálido
+  purple: #80296C,       // Morado emocional
+  teal: #1E8572          // Verde psicología
+);
+
+/* Mixin para aplicar colores del mapa */
+@mixin theme-color($property, $color-name) {
+  #{$property}: map.get($palette, $color-name);
+}
+
+/* -----------------------------------------------------------
+   🧱 VARIABLES DE DISEÑO
+----------------------------------------------------------- */
+$radius-sm: 6px;
+$radius-md: 12px;
+$radius-lg: 20px;
+
+$shadow-soft: 0 4px 12px rgba(0, 0, 0, 0.08);
+$shadow-medium: 0 6px 20px rgba(0, 0, 0, 0.12);
+
+$spacing-xs: 0.5rem;
+$spacing-sm: 1rem;
+$spacing-md: 2rem;
+$spacing-lg: 3rem;
+
+/* -----------------------------------------------------------
+   🧩 ESTILOS GLOBALES
+----------------------------------------------------------- */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  @include theme-color(background-color, gray);
+  @include theme-color(color, dark-blue);
+  font-family: 'Inter', sans-serif;
+  line-height: 1.6;
+}
+
+/* -----------------------------------------------------------
+   🔤 TIPOGRAFÍA
+----------------------------------------------------------- */
+h1, h2, h3, h4 {
+  font-family: 'Inter Tight', sans-serif;
+  font-weight: 600;
+  margin-bottom: $spacing-sm;
+}
+
+p {
+  margin-bottom: $spacing-sm;
+}
+
+/* -----------------------------------------------------------
+   🔘 BOTONES
+----------------------------------------------------------- */
+.btn {
+  padding: 0.75rem 1.5rem;
+  border-radius: $radius-md;
+  border: none;
+  cursor: pointer;
+  font-weight: 600;
+  transition: 0.2s ease;
+}
+
+.btn-primary {
+  @include theme-color(background-color, primary);
+  @include theme-color(color, gray);
+  box-shadow: $shadow-soft;
+
+  &:hover {
+    @include theme-color(background-color, aqua);
+  }
+}
+
+.btn-secondary {
+  @include theme-color(background-color, purple);
+  @include theme-color(color, gray);
+
+  &:hover {
+    @include theme-color(background-color, teal);
+  }
+}
+
+/* -----------------------------------------------------------
+   🟦 TARJETAS
+----------------------------------------------------------- */
+.card {
+  background: white;
+  border-radius: $radius-lg;
+  padding: $spacing-md;
+  box-shadow: $shadow-soft;
+}
+
+/* -----------------------------------------------------------
+   📦 CONTENEDORES
+----------------------------------------------------------- */
+.container {
+  max-width: 1200px;
+  margin: auto;
+  padding: $spacing-md;
+}
+
+/* -----------------------------------------------------------
+   🎭 UTILIDADES
+----------------------------------------------------------- */
+.text-center {
+  text-align: center;
+}
+
+.mt-md {
+  margin-top: $spacing-md;
+}
+
+.mb-md {
+  margin-bottom: $spacing-md;
+}
