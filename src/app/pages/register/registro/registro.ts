@@ -66,41 +66,30 @@ export class Registro {
     }
 
     // 2. Blocklist check (Brute force protection)
-    const blocklist = [// Variantes de "password"
-      'password',
-      'Password',
-      'Password1',
-      'Password123',
+    const blocklist = [
+      'Password1!',
       'Password123!',
-      'P@ssw0rd',
-      'P@ssword123',
-
-      // Secuencias numéricas
-      '123456',
-      '1234567',
-      '12345678',
-      '123456789',
-      '1234567890',
-
-      // Teclado
-      'qwerty',
-      'Qwerty123',
-      'Qwerty1234!',
-      'Asdfgh!',
-      'zxcvbn',
-
-      // Palabras típicas
+      'P@ssw0rd!',
+      'P@ssword123!',
+      'Admin123!',
       'Admin1234!',
-      '@Administrat0r',
-      'W€lcome',
-      'W€lcome123',
-      'l3tme1n!',
-
-      // Tus contraseñas ya añadidas
+      'Welcome1!',
+      'Welcome123!',
+      'Qwerty123!',
+      'Qwerty1234!',
+      'Asdfgh123!',
+      'Zxcvbn123!',
+      'Aa123456!',
+      'Abc12345!',
+      'Test1234!',
+      'User1234!',
+      'Login123!',
+      'Letmein1!',
       '@Admin1234',
       'psswD1234!',
       '123456Aa!',
       'Qwerty1234!'
+
     ];
     if (blocklist.includes(value)) {
       return { blocklisted: 'Esta contraseña es demasiado común' };
