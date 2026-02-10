@@ -5,6 +5,7 @@ $soft-bg: #f4f7f9; // Page background
 $card-bg: #e6f3ff; // "Azul clarito" for the form card
 $text-color: #2c3e50;
 $error-color: #e74c3c;
+$serena-green-pastel: #cfead5; // Pastel green for success states
 $border-radius: 16px; // Slightly softer
 $shadow: 0 8px 30px rgba(0, 123, 255, 0.1); // Soft blueish shadow
 $transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
@@ -84,6 +85,34 @@ $transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
             &:focus {
                 box-shadow: 0 0 0 4px rgba($error-color, 0.1);
             }
+        }
+
+        /* Valid state: use pastel green border only when user interacted */
+        &.ng-valid.ng-dirty,
+        &.ng-valid.ng-touched {
+            border-color: $serena-green-pastel;
+            background-color: #ffffff; // ensure background doesn't change
+            box-shadow: 0 0 0 4px rgba($serena-green-pastel, 0.12);
+
+            &:focus {
+                box-shadow: 0 0 0 6px rgba($serena-green-pastel, 0.12);
+            }
+        }
+
+        /* Ensure valid inputs never change background */
+        &.ng-valid.ng-dirty,
+        &.ng-valid.ng-touched {
+            background-color: #ffffff; // keep white
+        }
+
+        /* Override browser autofill background (Chrome) */
+        &:autofill,
+        &:-webkit-autofill,
+        &:-webkit-autofill:focus,
+        &:-webkit-autofill:hover {
+            -webkit-text-fill-color: $text-color !important;
+            box-shadow: 0 0 0 1000px #ffffff inset !important;
+            background-color: #ffffff !important;
         }
     }
 }

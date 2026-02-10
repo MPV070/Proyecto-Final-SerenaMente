@@ -1,0 +1,64 @@
+<div class="preferences-container">
+  <div class="preferences-card">
+    <div class="preferences-header">
+      <h2>Preferencias Inciales</h2>
+      <p>Ayúdanos a personalizar tu experiencia en SerenaMente.</p>
+    </div>
+
+    <form [formGroup]="preferencesForm" (ngSubmit)="onSubmit()" class="preferences-form">
+      
+      <!-- Modality Selection -->
+      <div class="form-group">
+        <label>¿Cómo prefieres tus sesiones?</label>
+        <div class="modality-grid">
+          
+          <label class="modality-option" [class.active]="f['modalidad'].value === 'online'">
+            <input type="radio" formControlName="modalidad" value="online">
+            <span class="icon">💻</span>
+            <span class="label">Online</span>
+          </label>
+
+          <label class="modality-option" [class.active]="f['modalidad'].value === 'presencial'">
+            <input type="radio" formControlName="modalidad" value="presencial">
+            <span class="icon">🏢</span>
+            <span class="label">Presencial</span>
+          </label>
+
+          <label class="modality-option" [class.active]="f['modalidad'].value === 'ambas'">
+            <input type="radio" formControlName="modalidad" value="ambas">
+            <span class="icon">🔄</span>
+            <span class="label">Ambas</span>
+          </label>
+
+        </div>
+        <div *ngIf="f['modalidad'].touched && f['modalidad'].invalid" class="error-message">
+          <span>Por favor, selecciona una modalidad.</span>
+        </div>
+      </div>
+
+      <!-- Professional Type Selection -->
+      <div class="form-group">
+        <label for="profesional">¿Qué tipo de profesional buscas?</label>
+        <div class="select-wrapper">
+          <select id="profesional" formControlName="profesional" [class.invalid]="f['profesional'].touched && f['profesional'].invalid">
+            <option value="" disabled selected>Selecciona una opción</option>
+            <option value="psicologo">Psicólogo Clínico</option>
+            <option value="terapeuta">Terapeuta</option>
+            <option value="coach">Coach Emocional</option>
+            <option value="nose">No lo sé todavía</option>
+          </select>
+          <span class="select-arrow">▼</span>
+        </div>
+        <div *ngIf="f['profesional'].touched && f['profesional'].invalid" class="error-message">
+            <span>Selecciona un tipo de profesional.</span>
+        </div>
+      </div>
+
+      <div class="form-actions">
+        <button type="button" class="btn-secondary" (click)="goBack()">Volver</button>
+        <button type="submit" [disabled]="preferencesForm.invalid" class="btn-primary">Continuar</button>
+      </div>
+
+    </form>
+  </div>
+</div>

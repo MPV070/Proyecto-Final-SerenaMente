@@ -13,6 +13,7 @@
         <input 
           id="nombreCompleto" 
           type="text" 
+          autocomplete="name"
           formControlName="nombreCompleto" 
           placeholder="Ej. Juan Pérez"
           [class.invalid]="f['nombreCompleto'].invalid && (f['nombreCompleto'].dirty || f['nombreCompleto'].touched)"
@@ -30,6 +31,7 @@
         <input 
           id="email" 
           type="email" 
+          autocomplete="email"
           formControlName="email" 
           placeholder="nombre@ejemplo.com"
           [class.invalid]="f['email'].invalid && (f['email'].dirty || f['email'].touched)"
@@ -47,6 +49,7 @@
             <input 
             id="password" 
             [type]="passwordVisible ? 'text' : 'password'" 
+            autocomplete="new-password"
             formControlName="password" 
             placeholder="••••••••"
             [class.invalid]="f['password'].invalid && (f['password'].dirty || f['password'].touched)"
@@ -71,6 +74,7 @@
             <input 
             id="confirmPassword" 
             [type]="confirmPasswordVisible ? 'text' : 'password'" 
+            autocomplete="new-password"
             formControlName="confirmPassword" 
             placeholder="••••••••"
             [class.invalid]="registerForm.errors?.['passwordMismatch'] && (f['confirmPassword'].dirty || f['confirmPassword'].touched)"

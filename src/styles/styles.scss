@@ -9,7 +9,8 @@ $palette: (
   gray: #D6D6D6,         // Gris suave
   aqua: #04BFAD,         // Verde agua
   light-aqua: #9BF5E9,   // Verde agua claro
-  gold: #E4B44E,         // Dorado cálido
+    success: #cfead5, // Pastel green for success states
+    gold: #E4B44E,         // Dorado cálido
   purple: #80296C,       // Morado emocional
   teal: #1E8572          // Verde psicología
 );
@@ -126,4 +127,13 @@ p {
 
 .mb-md {
   margin-bottom: $spacing-md;
+}
+
+/* Prevent browser autofill background globally */
+input:-webkit-autofill,
+textarea:-webkit-autofill,
+select:-webkit-autofill {
+  -webkit-text-fill-color: map.get($palette, dark-blue) !important;
+  box-shadow: 0 0 0 1000px white inset !important;
+  background-color: white !important;
 }

@@ -1,0 +1,272 @@
+// Variables (Using SerenaMente palette)
+$serena-blue: #007bff;
+$serena-deep-blue: #004085;
+$serena-gold: #d4af37;
+$soft-bg: #f4f7f9;
+$card-bg: #e6f3ff;
+$text-color: #2c3e50;
+$error-color: #e74c3c;
+$serena-green-pastel: #cfead5;
+$border-color: #cce5ff;
+$border-radius: 16px;
+$shadow: 0 8px 30px rgba(0, 123, 255, 0.1);
+$transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+
+.preferences-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background-color: $soft-bg;
+    padding: 2rem;
+    font-family: 'Inter', sans-serif;
+}
+
+.preferences-card {
+    background: $card-bg;
+    padding: 3rem;
+    border-radius: $border-radius;
+    box-shadow: $shadow;
+    width: 100%;
+    max-width: 520px;
+    border: 2px solid $border-color;
+    animation: fadeIn 0.5s ease-out;
+
+    .preferences-header {
+        text-align: center;
+        margin-bottom: 2.5rem;
+
+        h2 {
+            color: $serena-deep-blue;
+            font-size: 2rem;
+            margin-bottom: 0.5rem;
+            font-weight: 700;
+        }
+
+        p {
+            color: lighten($text-color, 15%);
+            font-size: 1rem;
+        }
+    }
+}
+
+.form-group {
+    margin-bottom: 2rem;
+
+    label {
+        display: block;
+        margin-bottom: 1rem;
+        color: $text-color;
+        font-weight: 600;
+        font-size: 1rem;
+    }
+}
+
+// Modality Grid Styles
+.modality-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1rem;
+
+    .modality-option {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        padding: 1.5rem 0.5rem;
+        background: white;
+        border: 2px solid #dae0e5;
+        border-radius: 12px;
+        cursor: pointer;
+        transition: $transition;
+
+        input[type="radio"] {
+            display: none;
+        }
+
+        .icon {
+            font-size: 2rem;
+            margin-bottom: 0.5rem;
+            transition: transform 0.2s;
+        }
+
+        .label {
+            font-weight: 500;
+            color: $text-color;
+            font-size: 0.9rem;
+        }
+
+        &:hover {
+            border-color: lighten($serena-blue, 20%);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+
+            .icon {
+                transform: scale(1.1);
+            }
+        }
+
+        &.active {
+            border-color: $serena-gold;
+            background-color: lighten($serena-gold, 45%);
+            box-shadow: 0 0 0 2px rgba($serena-gold, 0.2);
+
+            .label {
+                color: darken($serena-gold, 20%);
+                font-weight: 700;
+            }
+        }
+    }
+}
+
+// Select Styles
+.select-wrapper {
+    position: relative;
+
+    select {
+        width: 100%;
+        padding: 1rem 1.2rem;
+        appearance: none;
+        background-color: white;
+        border: 2px solid #dae0e5;
+        border-radius: 12px;
+        font-size: 1rem;
+        color: $text-color;
+        outline: none;
+        transition: $transition;
+        cursor: pointer;
+
+        &:focus {
+            border-color: $serena-gold;
+            box-shadow: 0 0 0 4px rgba($serena-gold, 0.15);
+        }
+
+        &.invalid {
+            border-color: $error-color;
+            background-color: #fff5f5;
+        }
+
+        /* Valid state only after interaction */
+        &.ng-valid.ng-dirty,
+        &.ng-valid.ng-touched {
+            border-color: $serena-green-pastel;
+            box-shadow: 0 0 0 4px rgba($serena-green-pastel, 0.12);
+        }
+
+        /* Prevent background changes on autofill/valid */
+        &.ng-valid.ng-dirty,
+        &.ng-valid.ng-touched {
+            background-color: white;
+        }
+
+        &:autofill,
+        &:-webkit-autofill,
+        &:-webkit-autofill:focus,
+        &:-webkit-autofill:hover {
+            -webkit-text-fill-color: $text-color !important;
+            box-shadow: 0 0 0 1000px white inset !important;
+            background-color: white !important;
+        }
+    }
+
+    .select-arrow {
+        position: absolute;
+        right: 1.2rem;
+        top: 50%;
+        transform: translateY(-50%);
+        pointer-events: none;
+        color: lighten($text-color, 30%);
+        font-size: 0.8rem;
+    }
+}
+
+.error-message {
+    color: $error-color;
+    font-size: 0.85rem;
+    margin-top: 0.5rem;
+    animation: fadeIn 0.3s ease;
+}
+
+.form-actions {
+    display: flex;
+    gap: 1rem;
+    margin-top: 2.5rem;
+
+    button {
+        flex: 1;
+        padding: 1rem;
+        border-radius: 12px;
+        font-size: 1rem;
+        font-weight: 600;
+        cursor: pointer;
+        transition: $transition;
+        border: none;
+    }
+
+    .btn-secondary {
+        background-color: white;
+        color: $text-color;
+        border: 2px solid #dae0e5;
+
+        &:hover {
+            background-color: #f8f9fa;
+            border-color: darken(#dae0e5, 10%);
+            transform: translateY(-1px);
+        }
+    }
+
+    .btn-primary {
+        background: linear-gradient(135deg, $serena-gold, darken($serena-gold, 10%));
+        color: white;
+        box-shadow: 0 4px 15px rgba($serena-gold, 0.3);
+
+        &:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba($serena-gold, 0.4);
+            filter: brightness(1.05);
+        }
+
+        &:disabled {
+            background: #e0e0e0;
+            color: #999;
+            cursor: not-allowed;
+            transform: none;
+            box-shadow: none;
+        }
+    }
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+// Mobile Responsiveness
+@media (max-width: 480px) {
+    .preferences-card {
+        padding: 1.5rem;
+    }
+
+    .modality-grid {
+        gap: 0.5rem;
+
+        .modality-option {
+            padding: 1rem 0.25rem;
+
+            .icon {
+                font-size: 1.5rem;
+            }
+
+            .label {
+                font-size: 0.8rem;
+            }
+        }
+    }
+}

@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { RouterModule } from '@angular/router';
+import { RouterModule, Router } from '@angular/router';
 import { FormBuilder, FormGroup, ReactiveFormsModule, Validators, AbstractControl, ValidationErrors } from '@angular/forms';
 
 @Component({
@@ -16,7 +16,7 @@ export class Registro {
   passwordVisible = false;
   confirmPasswordVisible = false;
 
-  constructor(private fb: FormBuilder) {
+  constructor(private fb: FormBuilder, private router: Router) {
     this.registerForm = this.fb.group({
       nombreCompleto: ['', [Validators.required, Validators.minLength(4), this.twoWordsValidator]],
       email: ['', [Validators.required, Validators.email]],
@@ -39,7 +39,7 @@ export class Registro {
   onSubmit() {
     if (this.registerForm.valid) {
       console.log('Form Submitted', this.registerForm.value);
-      // TODO: Proceed to next step or backend call
+      this.router.navigate(['/registro/preferencias']);
     } else {
       this.registerForm.markAllAsTouched();
     }
