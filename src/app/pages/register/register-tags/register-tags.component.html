@@ -1,0 +1,23 @@
+<div class="register-tags-container">
+  <h1 class="title">¿Con qué etiquetas te identificas?</h1>
+  <p class="subtitle">Selecciona las etiquetas que mejor te representen. Esta selección es opcional y puedes cambiarla más tarde.</p>
+
+  <form [formGroup]="registerForm" class="tags-form">
+    <div class="tags-grid">
+      <div
+        *ngFor="let tag of tags; let i = index"
+        class="tag-card"
+        [class.selected]="isTagSelected(i)"
+        (click)="toggleTag(i)"
+      >
+        <div class="tag-icon"></div>
+        <span class="tag-name">{{ tag.name }}</span>
+      </div>
+    </div>
+
+    <div class="buttons-container">
+      <button type="button" class="btn btn-secondary" (click)="onBack()">Volver</button>
+      <button type="button" class="btn btn-primary" (click)="onContinue()">Continuar</button>
+    </div>
+  </form>
+</div>

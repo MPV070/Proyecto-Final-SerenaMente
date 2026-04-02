@@ -1,0 +1,152 @@
+// Variables
+:root {
+  --serena-blue: #your-blue;
+  --serena-deep-blue: #your-deep-blue;
+  --serena-soft-gray: #your-soft-gray;
+  --serena-aqua: #your-aqua;
+  --serena-aqua-light: #your-aqua-light;
+  --serena-gold: #your-gold;
+  --serena-purple: #your-purple;
+  --serena-green: #your-green;
+}
+
+// Layout
+.register-legal-container {
+  max-width: 600px;
+  margin: 0 auto;
+  padding: 2rem;
+  background-color: white;
+  border-radius: 8px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+}
+
+.title {
+  font-size: 2rem;
+  font-weight: 300;
+  color: var(--serena-deep-blue);
+  text-align: center;
+  margin-bottom: 1rem;
+}
+
+.subtitle {
+  font-size: 1rem;
+  color: var(--serena-soft-gray);
+  text-align: center;
+  margin-bottom: 2rem;
+  line-height: 1.5;
+}
+
+// Form
+.legal-form {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.consent-item {
+  padding: 1rem;
+  border: 1px solid var(--serena-soft-gray);
+  border-radius: 8px;
+  background-color: white;
+  transition: border-color 0.2s ease;
+}
+
+.consent-item:hover {
+  border-color: var(--serena-aqua-light);
+}
+
+.checkbox-label {
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+  font-size: 1rem;
+  color: var(--serena-deep-blue);
+  line-height: 1.4;
+}
+
+.checkbox-input {
+  position: absolute;
+  opacity: 0;
+  cursor: pointer;
+}
+
+.checkmark {
+  position: relative;
+  height: 20px;
+  width: 20px;
+  background-color: white;
+  border: 2px solid var(--serena-soft-gray);
+  border-radius: 4px;
+  margin-right: 0.75rem;
+  transition: all 0.2s ease;
+}
+
+.checkbox-input:checked ~ .checkmark {
+  background-color: var(--serena-blue);
+  border-color: var(--serena-blue);
+}
+
+.checkbox-input:checked ~ .checkmark:after {
+  content: "";
+  position: absolute;
+  display: block;
+  left: 6px;
+  top: 2px;
+  width: 6px;
+  height: 10px;
+  border: solid white;
+  border-width: 0 2px 2px 0;
+  transform: rotate(45deg);
+}
+
+.link {
+  color: var(--serena-blue);
+  text-decoration: none;
+  font-weight: 500;
+}
+
+.link:hover {
+  color: var(--serena-green);
+  text-decoration: underline;
+}
+
+// Buttons
+.buttons-container {
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+  margin-top: 2rem;
+}
+
+.btn {
+  padding: 0.75rem 2rem;
+  border: none;
+  border-radius: 4px;
+  font-size: 1rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+
+  &.btn-primary {
+    background-color: var(--serena-blue);
+    color: white;
+
+    &:hover:not(:disabled) {
+      background-color: var(--serena-green);
+    }
+
+    &:disabled {
+      background-color: var(--serena-soft-gray);
+      cursor: not-allowed;
+    }
+  }
+
+  &.btn-secondary {
+    background-color: var(--serena-soft-gray);
+    color: var(--serena-deep-blue);
+
+    &:hover {
+      background-color: var(--serena-aqua-light);
+    }
+  }
+}

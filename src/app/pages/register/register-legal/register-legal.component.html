@@ -1,0 +1,42 @@
+<div class="register-legal-container">
+  <h1 class="title">Consentimientos legales</h1>
+  <p class="subtitle">Para completar tu registro, es necesario que aceptes los siguientes términos legales relacionados con el RGPD.</p>
+
+  <form [formGroup]="legalForm" class="legal-form">
+    <div class="consent-item">
+      <label class="checkbox-label">
+        <input type="checkbox" formControlName="termsAccepted" class="checkbox-input">
+        <span class="checkmark"></span>
+        Acepto los <a href="#" class="link">Términos y Condiciones</a>
+      </label>
+    </div>
+
+    <div class="consent-item">
+      <label class="checkbox-label">
+        <input type="checkbox" formControlName="privacyAccepted" class="checkbox-input">
+        <span class="checkmark"></span>
+        Acepto la <a href="#" class="link">Política de Privacidad</a>
+      </label>
+    </div>
+
+    <div class="consent-item">
+      <label class="checkbox-label">
+        <input type="checkbox" formControlName="dataTreatmentAccepted" class="checkbox-input">
+        <span class="checkmark"></span>
+        Acepto el tratamiento de datos sensibles relacionados con mi bienestar emocional
+      </label>
+    </div>
+
+    <div class="buttons-container">
+      <button type="button" class="btn btn-secondary" (click)="onBack()">Volver</button>
+      <button
+        type="button"
+        class="btn btn-primary"
+        [disabled]="!allAccepted"
+        (click)="onCreateAccount()"
+      >
+        Crear cuenta
+      </button>
+    </div>
+  </form>
+</div>

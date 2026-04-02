@@ -25,8 +25,7 @@ export class RegisterPreferencesComponent {
     onSubmit() {
         if (this.preferencesForm.valid) {
             console.log('Preferences submitted:', this.preferencesForm.value);
-            // TODO: Proceed to next step (Emotional Tags)
-            // this.router.navigate(['/registro/etiquetas']); 
+            this.router.navigate(['/registro/etiquetas']);
         } else {
             this.preferencesForm.markAllAsTouched();
         }
