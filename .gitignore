@@ -41,3 +41,17 @@ __screenshots__/
 # System files
 .DS_Store
 Thumbs.db
+
+# Environment files
+.env
+.env.local
+.env.*.local
+
+# Docker & Database
+docker-compose.override.yml
+mysql_data/
+.docker/
+
+# Vercel & Deployment
+.vercel
+.next

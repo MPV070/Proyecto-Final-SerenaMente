@@ -1,0 +1,56 @@
+version: '3.8'
+
+services:
+  mysql:
+    image: mysql:8.0
+    container_name: serena-mente-mysql
+    environment:
+      MYSQL_ROOT_PASSWORD: ${DB_ROOT_PASSWORD:-root_password}
+      MYSQL_DATABASE: ${DB_NAME:-serena_mente_db}
+      MYSQL_USER: ${DB_USER:-serena_user}
+      MYSQL_PASSWORD: ${DB_PASSWORD:-serena_password}
+    ports:
+      - "${DB_PORT:-3306}:3306"
+    volumes:
+      - mysql_data:/var/lib/mysql
+      - ./init.sql:/docker-entrypoint-initdb.d/init.sql:ro
+    healthcheck:
+      test: ["CMD", "mysqladmin", "ping", "-h", "localhost"]
+      timeout: 20s
+      retries: 10
+    networks:
+      - serena-mente-network
+
+  app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: serena-mente-app
+    ports:
+      - "${APP_PORT:-3000}:4200"
+    environment:
+      NODE_ENV: ${NODE_ENV:-development}
+      DB_HOST: mysql
+      DB_PORT: 3306
+      DB_USER: ${DB_USER:-serena_user}
+      DB_PASSWORD: ${DB_PASSWORD:-serena_password}
+      DB_NAME: ${DB_NAME:-serena_mente_db}
+      DOMAIN: ${DOMAIN:-localhost:3000}
+    depends_on:
+      mysql:
+        condition: service_healthy
+    volumes:
+      - .:/app
+      - /app/node_modules
+      - /app/dist
+    command: npm start
+    networks:
+      - serena-mente-network
+
+volumes:
+  mysql_data:
+    driver: local
+
+networks:
+  serena-mente-network:
+    driver: bridge

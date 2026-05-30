@@ -1,0 +1,31 @@
+{
+  "version": 2,
+  "builds": [
+    {
+      "src": "package.json",
+      "use": "@vercel/static-build",
+      "config": {
+        "distDir": "dist/Proyecto-Final-SerenaMente"
+      }
+    }
+  ],
+  "routes": [
+    {
+      "src": "^/(?!api).*",
+      "dest": "dist/Proyecto-Final-SerenaMente/index.html"
+    }
+  ],
+  "env": {
+    "development": {
+      "DOMAIN": "@development_domain"
+    },
+    "staging": {
+      "DOMAIN": "@staging_domain"
+    },
+    "production": {
+      "DOMAIN": "@production_domain"
+    }
+  },
+  "buildCommand": "npm run build",
+  "outputDirectory": "dist/Proyecto-Final-SerenaMente"
+}
