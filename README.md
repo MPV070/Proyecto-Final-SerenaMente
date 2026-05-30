@@ -5,6 +5,7 @@ A comprehensive Angular 21 application designed to provide mental health support
 **Available in:** [Español (LEEME.md)](LEEME.md) | English
 
 ---
+<<<<<<< HEAD
 
 ## 📋 Table of Contents
 
@@ -29,6 +30,26 @@ A comprehensive Angular 21 application designed to provide mental health support
   - [💻 Development](#-development)
     - [Available Scripts](#available-scripts)
       - [Docker Commands](#docker-commands)
+  - [📋 Table of Contents](#-table-of-contents-1)
+  - [✨ Features](#-features-1)
+    - [Current Implementation](#current-implementation-1)
+    - [Planned Features](#planned-features-1)
+  - [🛠️ Tech Stack](#️-tech-stack-1)
+    - [Frontend](#frontend-1)
+    - [Backend (Ready for Implementation)](#backend-ready-for-implementation-1)
+    - [Database](#database-1)
+    - [Deployment](#deployment-1)
+    - [Testing](#testing-1)
+  - [📦 Prerequisites](#-prerequisites-1)
+    - [Local Development with Docker](#local-development-with-docker-1)
+    - [Manual Development (without Docker)](#manual-development-without-docker-1)
+    - [Cloud Deployment](#cloud-deployment-1)
+  - [🚀 Getting Started](#-getting-started-1)
+    - [Option 1: Docker Compose (Recommended)](#option-1-docker-compose-recommended-1)
+    - [Option 2: Manual Setup](#option-2-manual-setup-1)
+  - [💻 Development](#-development-1)
+    - [Available Scripts](#available-scripts-1)
+      - [Docker Commands](#docker-commands-1)
       - [Build Commands](#build-commands)
       - [Testing DevOps](#testing-devops)
     - [Code Structure](#code-structure)
@@ -206,7 +227,170 @@ A comprehensive Angular 21 application designed to provide mental health support
 ### Available Scripts
 
 #### Docker Commands
+=======
+>>>>>>> 4a6cc9fa1efe3a290884e49e98ffdd46d136a365
 
+## 📋 Table of Contents
+
+- [Features](#-features)
+- [Tech Stack](#-tech-stack)
+- [Prerequisites](#-prerequisites)
+- [Getting Started](#-getting-started)
+- [Development](#-development)
+- [Deployment](#-deployment)
+- [Project Structure](#-project-structure)
+- [Documentation](#-documentation)
+- [Support](#-support)
+
+---
+
+## ✨ Features
+
+
+### Current Implementation
+
+- ✅ **4-Step User Registration Flow**
+  - Basic registration with email and password validation
+  - Preferences selection (modality, professional)
+  - Tag selection system
+  - Legal terms acceptance
+
+- ✅ **Responsive UI**
+  - Navigation bar with routing
+  - Home page with CTA to registration
+  - Complete form validation
+
+- ✅ **Database Integration**
+  - MySQL database with pre-configured schema
+  - User management system
+  - Preference tracking
+  - Tag system for categorization
+
+- ✅ **Deployment Ready**
+  - Docker & Docker Compose setup
+  - Vercel configuration (3 environments)
+  - SSR (Server-Side Rendering) support
+
+### Planned Features
+
+- Backend API with Node.js/Express
+- Authentication & authorization
+- User dashboard
+- Professional matching system
+- Session management
+- Real-time notifications
+
+---
+
+## 🛠️ Tech Stack
+
+### Frontend
+
+- **Angular:** 21.0.0 (Standalone Components)
+- **TypeScript:** 5.9.2
+- **SCSS:** Styling
+- **RxJS:** 7.8.0
+- **Angular Router:** Navigation
+- **Angular Forms:** Form handling with validation
+
+### Backend (Ready for Implementation)
+
+- **Express:** 5.1.0
+- **Node.js:** 20+ (Alpine in Docker)
+
+### Database
+
+- **MySQL:** 8.0
+- **Docker:** Containerization
+
+### Deployment
+
+- **Docker Compose:** Local development
+- **Vercel:** Cloud deployment (3 environments)
+- **Angular SSR:** Server-side rendering
+
+### Testing
+
+- **Vitest:** 4.0.8 (Unit tests)
+
+---
+
+## 📦 Prerequisites
+
+### Local Development with Docker
+
+- Docker 20.10+ and Docker Compose 1.29+
+- Any OS (Windows, macOS, Linux)
+
+### Manual Development (without Docker)
+
+- Node.js 20+
+- npm 11.6.2+
+- MySQL 8.0+
+- Angular CLI 21.0.5+
+
+### Cloud Deployment
+
+- Vercel account
+- Git repository (GitHub recommended)
+
+---
+
+## 🚀 Getting Started
+
+### Option 1: Docker Compose (Recommended)
+
+1. **Clone and setup:**
+
+   ```bash
+   git clone https://github.com/MPV070/Proyecto-Final-SerenaMente.git
+   cd Proyecto-Final-SerenaMente
+   cp .env.example .env
+   ```
+
+2. **Start services:**
+
+   ```bash
+   npm run docker:dev
+   ```
+
+3. **Access application:**
+
+   - App: http://localhost:3000
+   - Database: localhost:3306
+
+### Option 2: Manual Setup
+
+1. **Install dependencies:**
+
+   ```bash
+   npm install
+   ```
+
+2. **Configure environment:**
+
+   ```bash
+   cp .env.example .env
+   # Edit .env with your settings
+   ```
+
+3. **Start development server:**
+
+   ```bash
+   npm start
+   ```
+
+4. **Access application:**
+
+   - http://localhost:4200
+
+---
+
+## 💻 Development
+
+### Available Scripts
+
+#### Docker Commands
 ```bash
 npm run docker:dev      # Start with Docker Compose (recommended)
 npm run docker:up       # Start in background
@@ -218,7 +402,10 @@ npm run docker:prod     # Start in production mode
 ```
 
 #### Build Commands
+<<<<<<< HEAD
 
+=======
+>>>>>>> 4a6cc9fa1efe3a290884e49e98ffdd46d136a365
 ```bash
 npm start               # Development server (ng serve)
 npm run build          # Development build
@@ -435,7 +622,10 @@ This project is part of the SerenaMente initiative.
 ## 📞 Support
 
 For issues, questions, or suggestions:
+<<<<<<< HEAD
 
+=======
+>>>>>>> 4a6cc9fa1efe3a290884e49e98ffdd46d136a365
 1. Check the documentation in [DEPLOYMENT.md](DEPLOYMENT.md)
 2. Review the project structure in [PROJECT_STRUCTURE.md](PROJECT_STRUCTURE.md)
 3. Check troubleshooting section in this README
