@@ -5,9 +5,19 @@
     "ng": "ng",
     "start": "ng serve",
     "build": "ng build",
+    "build:prod": "ng build --configuration production",
+    "build:ssr": "ng build --configuration production && npm run build:server",
+    "build:server": "tsc -p src/server.tsconfig.json",
     "watch": "ng build --watch --configuration development",
     "test": "ng test",
-    "serve:ssr:Proyecto-Final-SerenaMente": "node dist/Proyecto-Final-SerenaMente/server/server.mjs"
+    "serve:ssr:Proyecto-Final-SerenaMente": "node dist/Proyecto-Final-SerenaMente/server/server.mjs",
+    "docker:build": "docker build -t serena-mente:latest .",
+    "docker:up": "docker-compose up -d",
+    "docker:down": "docker-compose down",
+    "docker:logs": "docker-compose logs -f app",
+    "docker:shell": "docker-compose exec app sh",
+    "docker:dev": "docker-compose up",
+    "docker:prod": "NODE_ENV=production docker-compose up -d"
   },
   "prettier": {
     "printWidth": 100,

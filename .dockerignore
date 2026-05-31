@@ -1,0 +1,17 @@
+node_modules
+npm-debug.log
+dist
+build
+.git
+.gitignore
+.vscode
+.editorconfig
+README.md
+Parte 2 del proyecto.pdf
+.env
+.env.local
+.env.*.local
+angular.json
+tsconfig.spec.json
+karma.conf.js
+.angular
