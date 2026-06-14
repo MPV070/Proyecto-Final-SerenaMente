@@ -1,1 +1,28 @@
-<p>feed works!</p>
+<div class="feed-container">
+
+  <div 
+    class="video-wrapper" 
+    *ngFor="let video of videos; let i = index"
+    [class.active]="i === currentIndex"
+  >
+    <video 
+      #videoPlayer
+      class="feed-video"
+      [src]="video.url"
+      autoplay
+      muted
+      playsinline
+      (ended)="nextVideo()"
+    ></video>
+
+    <div class="video-info">
+      <h3>{{ video.professionalName }}</h3>
+      <p>{{ video.description }}</p>
+
+      <div class="tags">
+        <span *ngFor="let tag of video.tags">#{{ tag }}</span>
+      </div>
+    </div>
+  </div>
+
+</div>

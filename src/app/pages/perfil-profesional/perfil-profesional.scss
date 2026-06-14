@@ -1,0 +1,179 @@
+$bg-page: #f4f7f9;
+$card-bg: #ffffff;
+$primary: #007bff;
+$accent: #d4af37;
+$text: #2c3e50;
+$shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+$radius: 18px;
+$transition: all 0.25s ease;
+
+.profile-container {
+  min-height: 100vh;
+  background: $bg-page;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 2rem;
+  font-family: 'Inter', sans-serif;
+}
+
+.profile-card {
+  background: $card-bg;
+  border-radius: $radius;
+  box-shadow: $shadow;
+  padding: 2.5rem;
+  max-width: 900px;
+  width: 100%;
+}
+
+.profile-header {
+  display: flex;
+  gap: 2rem;
+  align-items: center;
+  margin-bottom: 2rem;
+
+  .avatar {
+    width: 140px;
+    height: 140px;
+    border-radius: 50%;
+    overflow: hidden;
+    border: 3px solid rgba($primary, 0.2);
+
+    img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+  }
+
+  .info {
+    h1 {
+      font-size: 1.8rem;
+      margin: 0;
+      color: $text;
+    }
+
+    h2 {
+      font-size: 1.1rem;
+      margin: 0.3rem 0 0.5rem;
+      color: darken($text, 10%);
+      font-weight: 500;
+    }
+
+    .location {
+      font-size: 0.95rem;
+      color: lighten($text, 15%);
+      margin-bottom: 0.7rem;
+    }
+
+    .tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.4rem;
+
+      span {
+        background: #e6f3ff;
+        color: $primary;
+        padding: 0.25rem 0.7rem;
+        border-radius: 999px;
+        font-size: 0.8rem;
+        font-weight: 500;
+      }
+    }
+  }
+}
+
+.profile-body {
+  margin-bottom: 2rem;
+
+  h3 {
+    font-size: 1.1rem;
+    margin-bottom: 0.5rem;
+    color: $text;
+  }
+
+  p {
+    margin-bottom: 1.5rem;
+    color: darken($text, 5%);
+    line-height: 1.5;
+  }
+
+  .specialties {
+    list-style: disc;
+    padding-left: 1.2rem;
+    color: darken($text, 5%);
+
+    li {
+      margin-bottom: 0.3rem;
+    }
+  }
+}
+
+.profile-actions {
+  border-top: 1px solid #e0e6ee;
+  padding-top: 1.5rem;
+
+  h3 {
+    font-size: 1.1rem;
+    margin-bottom: 0.5rem;
+    color: $text;
+  }
+
+  p {
+    margin-bottom: 1rem;
+    color: lighten($text, 5%);
+  }
+
+  .buttons {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+
+    button {
+      border: none;
+      border-radius: 999px;
+      padding: 0.8rem 1.6rem;
+      font-size: 0.95rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: $transition;
+    }
+
+    .btn-whatsapp {
+      background: #25d366;
+      color: #ffffff;
+
+      &:hover {
+        background: darken(#25d366, 8%);
+        transform: translateY(-1px);
+      }
+    }
+
+    .btn-calendar {
+      background: #ffffff;
+      color: $primary;
+      border: 1px solid rgba($primary, 0.4);
+
+      &:hover {
+        background: rgba($primary, 0.06);
+        transform: translateY(-1px);
+      }
+    }
+  }
+}
+
+@media (max-width: 768px) {
+  .profile-card {
+    padding: 1.8rem;
+  }
+
+  .profile-header {
+    flex-direction: column;
+    align-items: flex-start;
+
+    .avatar {
+      width: 110px;
+      height: 110px;
+    }
+  }
+}

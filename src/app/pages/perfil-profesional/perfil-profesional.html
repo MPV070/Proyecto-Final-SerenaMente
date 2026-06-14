@@ -1,1 +1,49 @@
-<p>perfil-profesional works!</p>
+<div class="profile-container">
+  <div class="profile-card">
+
+    <!-- CABECERA PROFESIONAL -->
+    <div class="profile-header">
+      <div class="avatar">
+        <img [src]="professional.photoUrl" alt="{{ professional.name }}" />
+      </div>
+      <div class="info">
+        <h1>{{ professional.name }}</h1>
+        <h2>{{ professional.specialty }}</h2>
+        <p class="location" *ngIf="professional.location">
+          {{ professional.location }}
+        </p>
+        <div class="tags">
+          <span *ngFor="let tag of professional.tags">#{{ tag }}</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- DESCRIPCIÓN -->
+    <div class="profile-body">
+      <h3>Sobre mí</h3>
+      <p>{{ professional.bio }}</p>
+
+      <h3>Especialidades</h3>
+      <ul class="specialties">
+        <li *ngFor="let s of professional.specialties">{{ s }}</li>
+      </ul>
+    </div>
+
+    <!-- ACCIONES DE CITA -->
+    <div class="profile-actions">
+      <h3>Agenda una cita</h3>
+      <p>Elige cómo quieres contactar con {{ professional.name }}:</p>
+
+      <div class="buttons">
+        <button class="btn-whatsapp" (click)="openWhatsApp()">
+          Agendar por WhatsApp
+        </button>
+
+        <button class="btn-calendar" (click)="openGoogleCalendar()">
+          Añadir a Google Calendar
+        </button>
+      </div>
+    </div>
+
+  </div>
+</div>
