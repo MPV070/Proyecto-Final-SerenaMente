@@ -1,0 +1,196 @@
+@use 'sass:map';
+@use '../../../styles/design.scss' as *;
+
+.hero {
+  background: linear-gradient(180deg, rgba(map.get($palette, light-aqua), 0.08) 0%, white 100%);
+  padding: 6rem 2rem;
+  min-height: 600px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  overflow: hidden;
+}
+
+.hero-container {
+  max-width: 1000px;
+  width: 100%;
+  display: grid;
+  grid-template-columns: 1.2fr 0.8fr;
+  gap: 3rem;
+  align-items: center;
+  margin: 0 auto;
+}
+
+.hero-content {
+  display: flex;
+  flex-direction: column;
+  gap: 1.75rem;
+}
+
+.hero-title {
+  font-size: clamp(2.5rem, 4vw, 3.5rem);
+  font-weight: 700;
+  line-height: 1.1;
+  color: map.get($palette, dark-blue);
+}
+
+.hero-description {
+  font-size: 1.05rem;
+  line-height: 1.8;
+  color: rgba(map.get($palette, dark-blue), 0.72);
+  max-width: 680px;
+}
+
+.hero-cta {
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+.hero-accent {
+  width: 320px;
+  height: 320px;
+  background: radial-gradient(circle, rgba(map.get($palette, aqua), 0.14) 0%, transparent 72%);
+  border-radius: 50%;
+  position: relative;
+  filter: blur(1px);
+}
+
+.origin,
+.why-us,
+.values,
+.cta-final {
+  padding: 5rem 2rem;
+}
+
+.origin-container,
+.why-us-container,
+.values-container,
+.cta-container {
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+.origin-content,
+.values-grid,
+.features-grid {
+  display: grid;
+  gap: 2rem;
+}
+
+.origin-content p,
+.feature-item p,
+.value-item p,
+.cta-final p {
+  color: rgba(map.get($palette, dark-blue), 0.72);
+  line-height: 1.8;
+  font-size: 1rem;
+}
+
+.section-title {
+  font-size: 2.25rem;
+  font-weight: 700;
+  color: map.get($palette, dark-blue);
+  text-align: center;
+  margin-bottom: 3rem;
+}
+
+.features-grid,
+.values-grid {
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+}
+
+.feature-item,
+.value-item {
+  background: white;
+  border-radius: 1.5rem;
+  padding: 2rem;
+  box-shadow: 0 16px 40px rgba(7, 35, 90, 0.05);
+}
+
+.feature-number {
+  font-size: 2.4rem;
+  font-weight: 700;
+  color: rgba(map.get($palette, primary), 0.18);
+  margin-bottom: 1rem;
+}
+
+.feature-item h3,
+.value-item h3 {
+  font-size: 1.2rem;
+  margin-bottom: 1rem;
+  color: map.get($palette, dark-blue);
+}
+
+.value-item {
+  text-align: center;
+}
+
+.values-grid {
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+}
+
+.values-grid .value-item p {
+  color: rgba(map.get($palette, dark-blue), 0.7);
+}
+
+.cta-final {
+  background: linear-gradient(135deg, rgba(map.get($palette, primary), 0.08) 0%, rgba(map.get($palette, aqua), 0.08) 100%);
+  text-align: center;
+}
+
+.cta-container {
+  max-width: 700px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.cta-final h2 {
+  font-size: 2rem;
+  font-weight: 700;
+  color: map.get($palette, dark-blue);
+}
+
+.cta-final button {
+  margin: 0 auto;
+}
+
+@media (max-width: 992px) {
+  .hero-container {
+    grid-template-columns: 1fr;
+  }
+
+  .hero {
+    padding: 4rem 1.5rem;
+  }
+
+  .origin,
+  .why-us,
+  .values,
+  .cta-final {
+    padding: 3.5rem 1.5rem;
+  }
+}
+
+@media (max-width: 640px) {
+  .hero {
+    padding: 3rem 1.25rem;
+  }
+
+  .hero-title {
+    font-size: 2.25rem;
+  }
+
+  .features-grid,
+  .values-grid {
+    gap: 1.5rem;
+  }
+
+  .hero-cta {
+    flex-direction: column;
+    align-items: stretch;
+  }
+}

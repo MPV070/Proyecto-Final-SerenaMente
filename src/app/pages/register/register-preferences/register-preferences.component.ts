@@ -8,7 +8,7 @@ import { Router } from '@angular/router';
     standalone: true,
     imports: [CommonModule, ReactiveFormsModule],
     templateUrl: './register-preferences.component.html',
-    styleUrl: './register-preferences.component.scss'
+        styleUrls: ['./register-preferences.component.scss']
 })
 export class RegisterPreferencesComponent {
     preferencesForm: FormGroup;

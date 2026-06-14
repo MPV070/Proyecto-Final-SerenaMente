@@ -10,5 +10,18 @@ export const routes: Routes = [
   { path: 'registro', component: Registro },
   { path: 'registro/preferencias', component: RegisterPreferencesComponent },
   { path: 'registro/etiquetas', component: RegisterTagsComponent },
-  { path: 'registro/legal', component: RegisterLegalComponent }
+  { path: 'registro/legal', component: RegisterLegalComponent },
+  {
+    path: 'profesionales',
+    loadChildren: () =>
+      import('./pages/profesionales/profesionales-module')
+        .then(m => m.ProfesionalesModule)
+  },
+  {
+    path: 'sobreNosotros',
+    loadChildren: () =>
+      import('./pages/sobre-nosotros/sobre-nosotros-module')
+        .then(m => m.SobreNosotrosModule)
+  } 
+
 ];

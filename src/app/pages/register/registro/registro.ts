@@ -8,7 +8,7 @@ import { FormBuilder, FormGroup, ReactiveFormsModule, Validators, AbstractContro
   imports: [CommonModule, ReactiveFormsModule, RouterModule],
   standalone: true,
   templateUrl: './registro.html',
-  styleUrl: './registro.scss',
+  styleUrls: ['./registro.scss'],
 })
 export class Registro {
   // Form initialization
