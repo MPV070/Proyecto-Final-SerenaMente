@@ -13,4 +13,8 @@ export class HomeComponent {
   navigationToRegister() {
     this.router.navigate(['/registro']);
   }
+
+  navigationToSobreNosotros() {
+    this.router.navigate(['/sobre-nosotros']);
+  }
 }

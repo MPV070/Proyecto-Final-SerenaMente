@@ -22,6 +22,15 @@ export const routes: Routes = [
     loadChildren: () =>
       import('./pages/sobre-nosotros/sobre-nosotros-module')
         .then(m => m.SobreNosotrosModule)
-  } 
+  },
+
+  {
+    path: 'login',
+    loadChildren: () =>
+      import('./pages/login/login-module')
+        .then(m => m.LoginModule)
+  }
+
+
 
 ];

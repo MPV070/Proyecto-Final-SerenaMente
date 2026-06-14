@@ -13,6 +13,9 @@ export class NavbarComponent {
   navigationToRegister() {
     this.router.navigate(['/registro']);
   }
+  navigationToLogin() {
+    this.router.navigate(['/login']);
+  }
 }
 
 

@@ -1,0 +1,113 @@
+@use 'sass:map';
+@use '../../../styles/design.scss' as *;
+
+.professionals-page {
+  padding: 4rem 2rem;
+  min-height: calc(100vh - 110px);
+  background: linear-gradient(180deg, white 0%, rgba(map.get($palette, light-aqua), 0.08) 100%);
+}
+
+.header-section {
+  max-width: 1060px;
+  margin: 0 auto 3rem;
+  text-align: center;
+}
+
+.title {
+  font-size: clamp(2.4rem, 4vw, 3.6rem);
+  color: map.get($palette, dark-blue);
+  font-weight: 700;
+  line-height: 1.05;
+  margin-bottom: 1rem;
+}
+
+.subtitle {
+  max-width: 760px;
+  margin: 0 auto;
+  font-size: 1.05rem;
+  color: rgba(map.get($palette, dark-blue), 0.72);
+  line-height: 1.8;
+}
+
+.category {
+  max-width: 1060px;
+  margin: 0 auto 3rem;
+  padding: 3rem 0;
+  border-bottom: 1px solid rgba(map.get($palette, gray), 0.35);
+}
+
+.category-title {
+  font-size: 1.75rem;
+  font-weight: 700;
+  margin-bottom: 1.5rem;
+  color: map.get($palette, dark-blue);
+}
+
+.cards-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 1.5rem;
+}
+
+@media (max-width: 992px) {
+  .cards-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 700px) {
+  .professionals-page {
+    padding: 3rem 1rem;
+  }
+
+  .category {
+    padding: 2rem 0;
+  }
+
+  .cards-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+.card {
+  background: white;
+  border-radius: $radius-md;
+  border: 1px solid rgba(map.get($palette, gray), 0.4);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.04);
+  padding: 1.75rem;
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+.card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 18px 40px rgba(0, 0, 0, 0.08);
+}
+
+.card-name {
+  font-size: 1.35rem;
+  font-weight: 700;
+  margin-bottom: 0.75rem;
+  color: map.get($palette, dark-blue);
+}
+
+.card-description {
+  font-size: 1rem;
+  line-height: 1.75;
+  color: rgba(map.get($palette, dark-blue), 0.68);
+  margin-bottom: 1.25rem;
+}
+
+.card-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.6rem;
+}
+
+.tag {
+  background: rgba(map.get($palette, primary), 0.12);
+  color: map.get($palette, primary);
+  padding: 0.5rem 0.9rem;
+  border-radius: 999px;
+  font-size: 0.85rem;
+  font-weight: 600;
+}

@@ -1,0 +1,166 @@
+@use 'sass:map';
+@use '../../../styles/design.scss' as *;
+
+.login-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  padding: 2rem;
+  background: linear-gradient(180deg, white 0%, rgba(map.get($palette, light-aqua), 0.12) 100%);
+  font-family: 'Inter', sans-serif;
+}
+
+.login-card {
+  background: white;
+  padding: 3rem;
+  border-radius: $radius-lg;
+  box-shadow: $shadow-soft;
+  width: 100%;
+  max-width: 500px;
+  border: 1px solid rgba(map.get($palette, aqua), 0.25);
+  animation: slideUp 0.6s ease-out;
+}
+
+.login-header {
+  text-align: center;
+  margin-bottom: 2.5rem;
+
+  h2 {
+    color: map.get($palette, dark-blue);
+    font-size: 2rem;
+    margin-bottom: 0.5rem;
+    font-weight: 700;
+  }
+
+  p {
+    color: rgba(map.get($palette, dark-blue), 0.65);
+    font-size: 1rem;
+  }
+}
+
+.form-group {
+  margin-bottom: 1.5rem;
+
+  label {
+    display: block;
+    margin-bottom: 0.5rem;
+    color: map.get($palette, dark-blue);
+    font-weight: 600;
+    font-size: 0.95rem;
+  }
+
+  input {
+    width: 100%;
+    padding: 1rem 1.2rem;
+    border: 1.8px solid rgba(map.get($palette, gray), 0.85);
+    border-radius: $radius-md;
+    background: #ffffff;
+    font-size: 1rem;
+    transition: all 0.25s ease;
+    outline: none;
+    color: map.get($palette, dark-blue);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.04);
+
+    &:focus {
+      border-color: map.get($palette, gold);
+      box-shadow: 0 0 0 4px rgba(map.get($palette, gold), 0.12);
+    }
+
+    &.invalid {
+      border-color: map.get($palette, purple);
+      background-color: rgba(map.get($palette, purple), 0.08);
+    }
+  }
+}
+
+.password-input-wrapper {
+  position: relative;
+
+  input {
+    padding-right: 5rem;
+  }
+
+  .visibility-toggle {
+    position: absolute;
+    right: 0.9rem;
+    top: 50%;
+    transform: translateY(-50%);
+    background: none;
+    border: none;
+    color: rgba(map.get($palette, dark-blue), 0.65);
+    font-size: 0.9rem;
+    cursor: pointer;
+    padding: 0.35rem 0.65rem;
+    border-radius: 999px;
+    transition: all 0.2s ease;
+
+    &:hover {
+      color: map.get($palette, dark-blue);
+      background-color: rgba(map.get($palette, aqua), 0.12);
+    }
+  }
+}
+
+.error-message {
+  color: map.get($palette, purple);
+  font-size: 0.85rem;
+  margin-top: 0.5rem;
+}
+
+.btn-submit {
+  width: 100%;
+  padding: 1rem 1.1rem;
+  border-radius: $radius-md;
+  border: none;
+  color: white;
+  font-size: 1.05rem;
+  font-weight: 700;
+  cursor: pointer;
+  background: linear-gradient(135deg, map.get($palette, gold), darken(map.get($palette, gold), 10%));
+  box-shadow: 0 10px 30px rgba(map.get($palette, gold), 0.18);
+  transition: all 0.25s ease;
+
+  &:hover:not(:disabled) {
+    transform: translateY(-2px);
+    box-shadow: 0 14px 35px rgba(map.get($palette, gold), 0.25);
+  }
+
+  &:disabled {
+    opacity: 0.65;
+    cursor: not-allowed;
+    box-shadow: none;
+    background: rgba(map.get($palette, gray), 0.4);
+  }
+}
+
+.login-footer {
+  text-align: center;
+  margin-top: 1.75rem;
+  color: rgba(map.get($palette, dark-blue), 0.7);
+  font-size: 0.95rem;
+
+  a {
+    color: map.get($palette, dark-blue);
+    font-weight: 700;
+    text-decoration: none;
+    transition: all 0.2s ease;
+
+    &:hover {
+      color: map.get($palette, primary);
+      text-decoration: underline;
+    }
+  }
+}
+
+@keyframes slideUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px) scale(0.98);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
