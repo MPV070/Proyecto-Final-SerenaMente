@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 import { ReactiveFormsModule } from '@angular/forms';
 import { FormBuilder, FormGroup, FormArray, FormControl } from '@angular/forms';
 import { Router } from '@angular/router';
+import { MockDataService, Tag } from '../../../services/mock-data.service';
 
 @Component({
   selector: 'app-register-tags',
@@ -13,18 +14,14 @@ import { Router } from '@angular/router';
 })
 export class RegisterTagsComponent {
   registerForm: FormGroup;
-  tags = [
-    { id: 1, name: 'Etiqueta 1' },
-    { id: 2, name: 'Etiqueta 2' },
-    { id: 3, name: 'Etiqueta 3' },
-    { id: 4, name: 'Etiqueta 4' },
-    { id: 5, name: 'Etiqueta 5' },
-    { id: 6, name: 'Etiqueta 6' },
-    { id: 7, name: 'Etiqueta 7' },
-    { id: 8, name: 'Etiqueta 8' }
-  ];
+  tags: Tag[] = [];
 
-  constructor(private fb: FormBuilder, private router: Router) {
+  constructor(
+    private fb: FormBuilder,
+    private router: Router,
+    private mockService: MockDataService
+  ) {
+    this.tags = this.mockService.getTags();
     this.registerForm = this.fb.group({
       selectedTags: this.fb.array([])
     });
@@ -51,12 +48,21 @@ export class RegisterTagsComponent {
   }
 
   onContinue(): void {
-    const selected = this.tags.filter((_, index) => this.isTagSelected(index));
-    console.log('Etiquetas seleccionadas:', selected);
+    const selectedTags: Tag[] = [];
+    this.tags.forEach((tag, index) => {
+      if (this.isTagSelected(index)) {
+        selectedTags.push(tag);
+      }
+    });
+
+    // Guardar tags en localStorage
+    localStorage.setItem('selectedTags', JSON.stringify(selectedTags));
+
+    console.log('Etiquetas seleccionadas:', selectedTags);
     this.router.navigate(['/registro/legal']);
   }
 
   onBack(): void {
-    this.router.navigate(['/register']);
+    this.router.navigate(['/registro']);
   }
 }

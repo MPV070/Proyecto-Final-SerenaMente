@@ -31,9 +31,9 @@ export class RegisterLegalComponent {
 
   onCreateAccount(): void {
     if (this.legalForm.valid) {
-      console.log('Legal consents accepted, creating account...');
-      // Aquí iría la lógica para crear la cuenta
-      // this.router.navigate(['/login']); // O a donde corresponda después del registro
+      console.log('Cuenta creada correctamente');
+      // Redirigir al feed despu�s del registro
+      this.router.navigate(['/feed']);
     }
   }
 

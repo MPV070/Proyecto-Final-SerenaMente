@@ -1,11 +1,32 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { CommonModule } from '@angular/common';
+import { MockDataService, UserProfile } from '../../services/mock-data.service';
 
 @Component({
   selector: 'app-perfil-usuario',
-  imports: [],
+  standalone: true,
+  imports: [CommonModule],
   templateUrl: './perfil-usuario.html',
-  styleUrls: ['./perfil-usuario.scss'],
+  styleUrls: ['./perfil-usuario.scss']
 })
-export class PerfilUsuario {
+export class PerfilUsuario implements OnInit {
+  user: UserProfile | null = null;
 
+  constructor(private mockService: MockDataService) {}
+
+  ngOnInit(): void {
+    this.loadUserProfile();
+  }
+
+  loadUserProfile(): void {
+    this.user = this.mockService.getUserProfile();
+    if (!this.user) {
+      console.warn('No hay usuario logueado');
+    }
+  }
+
+  getTagIcon(tagName: string): string {
+    const tag = this.mockService.getTags().find(t => t.name.toLowerCase() === tagName.toLowerCase());
+    return tag ? tag.icon : '???';
+  }
 }

@@ -6,6 +6,8 @@ import { RegisterTagsComponent } from './pages/register/register-tags/register-t
 import { RegisterLegalComponent } from './pages/register/register-legal/register-legal.component';
 import { FeedComponent } from './pages/feed/feed';
 import { PerfilProfesional } from './pages/perfil-profesional/perfil-profesional';
+import { PerfilUsuario } from './pages/perfil-usuario/perfil-usuario';
+import { Recomendaciones } from './pages/recomendaciones/recomendaciones';
 
 export const routes: Routes = [
   { path: '', component: HomeComponent },
@@ -39,7 +41,15 @@ export const routes: Routes = [
     loadChildren: () =>
       import('./pages/login/login-module')
         .then(m => m.LoginModule)
-  }
+  },
+  {
+    path: 'perfil-usuario',
+    component: PerfilUsuario
+  },
+  {
+    path: 'recomendaciones',
+    component: Recomendaciones
+ }
 
 
 

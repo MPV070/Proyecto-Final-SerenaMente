@@ -1,0 +1,169 @@
+$bg-page: #f4f7f9;
+$card-bg: #ffffff;
+$primary: #069DBF;
+$accent: #E4B44E;
+$text: #07235A;
+$shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+$radius: 18px;
+
+.recomendaciones-container {
+  min-height: 100vh;
+  background: $bg-page;
+  padding: 2rem;
+  font-family: 'Inter', sans-serif;
+
+  .recomendaciones-header {
+    text-align: center;
+    margin-bottom: 2rem;
+    h1 {
+      color: $text;
+      margin-bottom: 0.5rem;
+    }
+    p {
+      color: lighten($text, 20%);
+    }
+  }
+
+  .tags-section {
+    margin-bottom: 2rem;
+    h2 {
+      color: $text;
+      margin-bottom: 1rem;
+    }
+    .tags-grid {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.8rem;
+      .tag-card {
+        background: #f0f0f0;
+        border: 2px solid transparent;
+        border-radius: 999px;
+        padding: 0.6rem 1.2rem;
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        gap: 0.4rem;
+        transition: all 0.2s ease;
+        &:hover {
+          background: #e0e0e0;
+        }
+        &.selected {
+          background: rgba($primary, 0.15);
+          border-color: $primary;
+          .tag-name {
+            color: $primary;
+            font-weight: 600;
+          }
+        }
+        .tag-icon {
+          font-size: 1.2rem;
+        }
+        .tag-name {
+          font-size: 0.95rem;
+          color: $text;
+        }
+      }
+    }
+  }
+
+  .recommendations-section {
+    h2 {
+      color: $text;
+      margin-bottom: 1rem;
+    }
+    .no-results {
+      text-align: center;
+      padding: 2rem;
+      color: lighten($text, 20%);
+    }
+    .recommendations-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+      gap: 1.5rem;
+      .recommendation-card {
+        background: $card-bg;
+        border-radius: $radius;
+        box-shadow: $shadow;
+        padding: 1.5rem;
+        display: flex;
+        flex-direction: column;
+        transition: transform 0.2s ease;
+        &:hover {
+          transform: translateY(-3px);
+        }
+        .card-header {
+          display: flex;
+          align-items: center;
+          gap: 0.5rem;
+          margin-bottom: 1rem;
+          .card-type-icon {
+            font-size: 1.3rem;
+          }
+          .card-type {
+            font-size: 0.8rem;
+            font-weight: 600;
+            color: $primary;
+            text-transform: uppercase;
+          }
+        }
+        h3 {
+          font-size: 1.1rem;
+          color: $text;
+          margin-bottom: 0.5rem;
+        }
+        p {
+          font-size: 0.95rem;
+          color: lighten($text, 15%);
+          margin-bottom: 1rem;
+          flex-grow: 1;
+        }
+        .card-footer {
+          margin-bottom: 1rem;
+          .professional {
+            font-size: 0.85rem;
+            font-weight: 600;
+            color: $accent;
+            display: block;
+            margin-bottom: 0.5rem;
+          }
+          .card-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.3rem;
+            .card-tag {
+              background: #e6f3ff;
+              color: $primary;
+              padding: 0.2rem 0.6rem;
+              border-radius: 999px;
+              font-size: 0.75rem;
+            }
+          }
+        }
+        .btn-primary {
+          display: inline-block;
+          background: $primary;
+          color: white;
+          padding: 0.6rem 1.2rem;
+          border-radius: 999px;
+          text-decoration: none;
+          font-weight: 600;
+          font-size: 0.9rem;
+          text-align: center;
+          transition: background 0.2s ease;
+          &:hover {
+            background: darken($primary, 8%);
+          }
+        }
+      }
+    }
+  }
+}
+
+@media (max-width: 768px) {
+  .recomendaciones-container {
+    padding: 1rem;
+  }
+  .recommendations-section .recommendations-grid {
+    grid-template-columns: 1fr;
+  }
+}

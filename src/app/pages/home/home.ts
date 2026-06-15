@@ -15,6 +15,6 @@ export class HomeComponent {
   }
 
   navigationToSobreNosotros() {
-    this.router.navigate(['/sobre-nosotros']);
+    this.router.navigate(['/sobreNosotros']);
   }
 }

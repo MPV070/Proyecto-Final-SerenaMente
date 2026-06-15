@@ -1,1 +1,50 @@
-<p>recomendaciones works!</p>
+<div class='recomendaciones-container'>
+
+  <header class='recomendaciones-header'>
+    <h1>Recomendaciones para ti</h1>
+    <p>Contenido personalizado basado en tus intereses y preferencias.</p>
+  </header>
+
+  <!-- SELECCION DE TAGS -->
+  <section class='tags-section'>
+    <h2>Tus intereses</h2>
+    <div class='tags-grid'>
+      <div
+        *ngFor='let tag of allTags'
+        class='tag-card'
+        [class.selected]='selectedTags.includes(tag)'
+        (click)='toggleTag(tag)'
+      >
+        <span class='tag-icon'>{{ tag.icon }}</span>
+        <span class='tag-name'>{{ tag.name }}</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- LISTA DE RECOMENDACIONES -->
+  <section class='recommendations-section'>
+    <h2>Contenido recomendado</h2>
+
+    <div *ngIf='recommendations.length === 0' class='no-results'>
+      <p>No hay recomendaciones disponibles para los tags seleccionados.</p>
+    </div>
+
+    <div class='recommendations-grid'>
+      <article *ngFor='let rec of recommendations' class='recommendation-card'>
+        <div class='card-header'>
+          <span class='card-type-icon'>{{ getRecommendationIcon(rec.type) }}</span>
+          <span class='card-type'>{{ rec.type | uppercase }}</span>
+        </div>
+        <h3>{{ rec.title }}</h3>
+        <p>{{ rec.description }}</p>
+        <div class='card-footer'>
+          <span class='professional'>{{ rec.professionalName }}</span>
+          <div class='card-tags'>
+            <span *ngFor='let tag of rec.tags' class='card-tag'>#{{ tag }}</span>
+          </div>
+        </div>
+        <a [href]='rec.url' target='_blank' class='btn btn-primary'>Ver contenido</a>
+      </article>
+    </div>
+  </section>
+</div>

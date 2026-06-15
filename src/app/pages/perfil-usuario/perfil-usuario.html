@@ -1,1 +1,58 @@
-<p>perfil-usuario works!</p>
+<div class='profile-container'>
+  <div class='profile-card' *ngIf='user; else notLoggedIn'>
+
+    <!-- CABECERA -->
+    <div class='profile-header'>
+      <div class='avatar'>
+        <img [src]='user.photoUrl' alt='{{ user.name }}' />
+      </div>
+
+      <div class='info'>
+        <h1>{{ user.name }}</h1>
+        <p class='email'>{{ user.email }}</p>
+        <p class='join-date'>Miembro desde: {{ user.joinDate }}</p>
+
+        <div class='tags'>
+          <span *ngFor='let tag of user.tags' class='tag'>
+            <span class='tag-icon'>{{ getTagIcon(tag.name) }}</span>
+            #{{ tag.name }}
+          </span>
+        </div>
+      </div>
+    </div>
+
+    <!-- PREFERENCIAS -->
+    <div class='profile-body'>
+      <h3>Tus Preferencias</h3>
+      <div class='preferences-grid'>
+        <div class='preference-item'>
+          <strong>Modalidad:</strong>
+          <p>{{ user.preferences.modalidad || 'No especificada' }}</p>
+        </div>
+        <div class='preference-item'>
+          <strong>Tipo de profesional:</strong>
+          <p>{{ user.preferences.profesional || 'No especificado' }}</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- ACCIONES -->
+    <div class='profile-actions'>
+      <h3>Mi Cuenta</h3>
+      <div class='buttons'>
+        <button class='btn btn-primary' (click)='editProfile()'>Editar Perfil</button>
+        <button class='btn btn-secondary' (click)='logout()'>Cerrar Sesión</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<ng-template #notLoggedIn>
+  <div class='profile-container'>
+    <div class='profile-card profile-missing'>
+      <h2>No has iniciado sesión</h2>
+      <p>Para ver tu perfil, por favor inicia sesión.</p>
+      <a href='/login' class='btn btn-primary'>Iniciar Sesión</a>
+    </div>
+  </div>
+</ng-template>

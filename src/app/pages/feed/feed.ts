@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { HttpClientModule } from '@angular/common/http';
 import { InstagramService, InstaPost } from '../../services/instagram.service';
+import { FeedNavbarComponent } from '../../components/feed-navbar/feed-navbar';
 
 interface MockUser {
   email: string;
@@ -11,7 +12,8 @@ interface MockUser {
 @Component({
   selector: 'app-feed',
   standalone: true,
-  imports: [CommonModule, HttpClientModule],
+  imports: [CommonModule, HttpClientModule, FeedNavbarComponent],
+
   templateUrl: './feed.html',
   styleUrls: ['./feed.scss']
 })

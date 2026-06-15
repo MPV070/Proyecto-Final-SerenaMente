@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, RouterModule } from '@angular/router';
 import { CommonModule } from '@angular/common';
+import { MockDataService } from '../../services/mock-data.service';
 
 interface ProfessionalProfile {
   id: string;
@@ -15,111 +16,6 @@ interface ProfessionalProfile {
   calendarTitle: string;
 }
 
-const PROFESSIONALS: Record<string, ProfessionalProfile> = {
-  'laura-martinez': {
-    id: 'laura-martinez',
-    name: 'Laura Martínez',
-    specialty: 'Psicóloga especializada en ansiedad y autoestima',
-    location: 'Online · España',
-    photoUrl: 'assets/images/professionals/laura.jpg',
-    tags: ['ansiedad', 'autoestima', 'terapia online'],
-    bio: 'Te acompaño a entender tus emociones, gestionar la ansiedad y construir una relación más sana contigo misma.',
-    specialties: [
-      'Ansiedad y ataques de pánico',
-      'Autoestima y autocrítica',
-      'Gestión emocional',
-      'Terapia online'
-    ],
-    whatsappNumber: '+34623227167',
-    calendarTitle: 'Sesión con Laura Martínez'
-  },
-  'javier-torres': {
-    id: 'javier-torres',
-    name: 'Javier Torres',
-    specialty: 'Psicólogo cognitivo-conductual con experiencia en depresión y estrés laboral',
-    location: 'Online · España',
-    photoUrl: 'assets/images/professionals/javier.jpg',
-    tags: ['TCC', 'Depresión', 'Estrés'],
-    bio: 'Acompaño a personas a encontrar herramientas prácticas para manejar el estrés y recuperar equilibrio emocional.',
-    specialties: [
-      'Depresión',
-      'Estrés laboral',
-      'Autocuidado emocional',
-      'Terapia cognitivo-conductual'
-    ],
-    whatsappNumber: '+34612345678',
-    calendarTitle: 'Sesión con Javier Torres'
-  },
-  'maria-delgado': {
-    id: 'maria-delgado',
-    name: 'María Delgado',
-    specialty: 'Coach personal enfocada en crecimiento personal y gestión del cambio',
-    location: 'Online · España',
-    photoUrl: 'assets/images/professionals/maria.jpg',
-    tags: ['Crecimiento', 'Motivación', 'Cambio'],
-    bio: 'Te ayudo a diseñar un plan personal que te permita avanzar con seguridad hacia tus metas.',
-    specialties: [
-      'Objetivos personales',
-      'Cambio de hábitos',
-      'Motivación',
-      'Gestión del cambio'
-    ],
-    whatsappNumber: '+34698765432',
-    calendarTitle: 'Sesión con María Delgado'
-  },
-  'ana-ruiz': {
-    id: 'ana-ruiz',
-    name: 'Ana Ruiz',
-    specialty: 'Entrenadora personal experta en tonificación y rutinas adaptadas',
-    location: 'Barcelona · España',
-    photoUrl: 'assets/images/professionals/ana.jpg',
-    tags: ['Fitness', 'Tonificación', 'Rutinas'],
-    bio: 'Creo entrenamientos personalizados para ayudarte a fortalecer el cuerpo y sentirte con más energía.',
-    specialties: [
-      'Entrenamiento funcional',
-      'Tonificación',
-      'Rutinas adaptadas',
-      'Bienestar físico'
-    ],
-    whatsappNumber: '+34611122233',
-    calendarTitle: 'Sesión con Ana Ruiz'
-  },
-  'elena-morales': {
-    id: 'elena-morales',
-    name: 'Elena Morales',
-    specialty: 'Nutricionista especializada en alimentación consciente y bienestar digestivo',
-    location: 'Madrid · España',
-    photoUrl: 'assets/images/professionals/elena.jpg',
-    tags: ['Nutrición', 'Digestión', 'Hábitos'],
-    bio: 'Te acompaño a mejorar tu relación con la comida desde la escucha y el respeto a tu cuerpo.',
-    specialties: [
-      'Alimentación consciente',
-      'Bienestar digestivo',
-      'Hábitos saludables',
-      'Plan nutricional personalizado'
-    ],
-    whatsappNumber: '+34644455566',
-    calendarTitle: 'Sesión con Elena Morales'
-  },
-  'claudia-vega': {
-    id: 'claudia-vega',
-    name: 'Claudia Vega',
-    specialty: 'Instructora de yoga enfocada en relajación, respiración y equilibrio',
-    location: 'Online · España',
-    photoUrl: 'assets/images/professionals/claudia.jpg',
-    tags: ['Yoga', 'Relajación', 'Mindfulness'],
-    bio: 'Con prácticas suaves y conscientes, te ayudo a reconectar con tu cuerpo y tu respiración.',
-    specialties: [
-      'Yoga restaurativo',
-      'Respiración',
-      'Relajación',
-      'Mindfulness'
-    ],
-    whatsappNumber: '+34677788899',
-    calendarTitle: 'Sesión con Claudia Vega'
-  }
-};
-
 @Component({
   selector: 'app-perfil-profesional',
   standalone: true,
@@ -132,56 +28,60 @@ export class PerfilProfesional implements OnInit {
   videos: Array<{ url: string; caption: string }> = [];
   notFound = false;
 
-  constructor(private route: ActivatedRoute) {}
+  constructor(
+    private route: ActivatedRoute,
+    private mockService: MockDataService
+  ) {}
 
   ngOnInit() {
     const id = this.route.snapshot.paramMap.get('id');
-    if (id && PROFESSIONALS[id]) {
-      this.professional = PROFESSIONALS[id];
+    if (id) {
+      const data = this.mockService.getProfessionalById(id);
+      if (data) {
+        this.professional = {
+          id: data.id,
+          name: data.name,
+          specialty: data.specialty,
+          location: data.location,
+          photoUrl: data.photoUrl,
+          tags: data.tags,
+          bio: data.bio,
+          specialties: data.specialties,
+          whatsappNumber: data.whatsappNumber,
+          calendarTitle: data.calendarTitle
+        };
+      } else {
+        this.notFound = true;
+      }
     } else {
       this.notFound = true;
     }
-
     this.loadVideos();
   }
 
   loadVideos() {
-    this.videos = [
-      {
-        url: 'assets/videos/ansiedad1.mp4',
-        caption: 'Consejos prácticos para calmar la ansiedad en el día a día.'
-      },
-      {
-        url: 'assets/videos/autoestima1.mp4',
-        caption: 'Estrategias para cuidar tu autoestima y sentirte más segura.'
-      }
-    ];
+    if (this.professional) {
+      this.videos = [
+        { url: 'https://www.youtube.com/embed/example1', caption: 'Consejos pr�cticos para calmar la ansiedad.' },
+        { url: 'https://www.youtube.com/embed/example2', caption: 'Estrategias para cuidar tu autoestima.' }
+      ];
+    }
   }
 
   openWhatsApp() {
-    if (!this.professional) {
-      return;
-    }
-
+    if (!this.professional) return;
     const phone = this.professional.whatsappNumber.replace(/\D/g, '');
-    const text = encodeURIComponent(
-      `Hola ${this.professional.name}, me gustaría agendar una sesión contigo a través de SerenaMente.`
-    );
-    const url = `https://wa.me/${phone}?text=${text}`;
+    const text = encodeURIComponent(Hola , me gustar�a agendar una sesi�n contigo a trav�s de SerenaMente.);
+    const url = https://wa.me/?text=;
     window.open(url, '_blank');
   }
 
   openGoogleCalendar() {
-    if (!this.professional) {
-      return;
-    }
-
+    if (!this.professional) return;
     const title = encodeURIComponent(this.professional.calendarTitle);
-    const details = encodeURIComponent(
-      `Sesión con ${this.professional.name} reservada desde SerenaMente.`
-    );
+    const details = encodeURIComponent(Sesi�n con  reservada desde SerenaMente.);
     const location = encodeURIComponent(this.professional.location || '');
-    const url = `https://calendar.google.com/calendar/render?action=TEMPLATE&text=${title}&details=${details}&location=${location}`;
+    const url = https://calendar.google.com/calendar/render?action=TEMPLATE&text=&details=&location=;
     window.open(url, '_blank');
   }
 }

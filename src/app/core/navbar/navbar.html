@@ -1,18 +1,24 @@
-<nav class="navbar">
-  <div class="navbar-container">
-    <div class="navbar-brand">
-      <span class="logo">SerenaMente</span>
+<nav class='navbar'>
+  <div class='navbar-container'>
+    <div class='navbar-brand'>
+      <span class='logo'>SerenaMente</span>
     </div>
 
-    <ul class="nav-menu">
-      <li><a routerLink="/" class="nav-link">Inicio</a></li>
-      <li><a routerLink="/profesionales" class="nav-link">Profesionales</a></li>
-      <li><a routerLink="/sobreNosotros" class="nav-link">Sobre nosotros</a></li>
+    <ul class='nav-menu'>
+      <li><a routerLink='/' class='nav-link'>Inicio</a></li>
+      <li><a routerLink='/profesionales' class='nav-link'>Profesionales</a></li>
+      <li><a routerLink='/sobreNosotros' class='nav-link'>Sobre nosotros</a></li>
+      <li *ngIf='isLoggedIn'><a routerLink='/recomendaciones' class='nav-link'>Recomendaciones</a></li>
     </ul>
 
-    <div class="nav-actions">
-      <button class="btn btn-ghost" (click)="navigationToLogin()">Iniciar sesiÃ³n</button>
-      <button class="btn btn-primary" (click)="navigationToRegister()">Registrarse</button>
+    <div class='nav-actions'>
+      <ng-container *ngIf='!isLoggedIn; else loggedInMenu'>
+        <button class='btn btn-ghost' (click)='navigationToLogin()'>Iniciar sesión</button>
+        <button class='btn btn-primary' (click)='navigationToRegister()'>Registrarse</button>
+      </ng-container>
+      <ng-template #loggedInMenu>
+        <button class='btn btn-ghost' (click)='navigationToPerfil()'>Mi Perfil</button>
+      </ng-template>
     </div>
   </div>
 </nav>

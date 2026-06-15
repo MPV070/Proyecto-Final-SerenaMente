@@ -1,10 +1,12 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
+
 @Component({
   selector: 'app-feed-navbar',
-  standalone: false,
+  standalone: true,
+  imports: [],
   templateUrl: './feed-navbar.html',
-  styleUrl: './feed-navbar.scss',
+  styleUrls: ['./feed-navbar.scss'],
 })
 
 export class FeedNavbarComponent {
@@ -16,7 +18,7 @@ export class FeedNavbarComponent {
   }
 
   goToExplore() {
-    this.router.navigate(['/explore']); // si no existe, lo creas luego
+    this.router.navigate(['/explore']);
   }
 
   goToProfile() {

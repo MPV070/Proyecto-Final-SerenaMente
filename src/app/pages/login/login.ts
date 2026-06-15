@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { AbstractControl, FormBuilder, FormGroup, Validators, ReactiveFormsModule } from '@angular/forms';
+import { AbstractControl, FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { Router, RouterModule } from '@angular/router';
 import { CommonModule } from '@angular/common';
 
@@ -49,11 +49,9 @@ export class LoginComponent implements OnInit {
       name: 'Usuario de prueba'
     };
 
+    // Guardar usuario en localStorage
     localStorage.setItem('mockUser', JSON.stringify(user));
     console.log('Datos enviados:', this.loginForm.value);
-
-    // Aquí conectarás tu backend:
-    // this.authService.login(this.loginForm.value).subscribe(...)
 
     this.router.navigate(['/feed']);
   }
