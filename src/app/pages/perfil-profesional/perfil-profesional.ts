@@ -62,7 +62,7 @@ export class PerfilProfesional implements OnInit {
   loadVideos() {
     if (this.professional) {
       this.videos = [
-        { url: 'https://www.youtube.com/embed/example1', caption: 'Consejos pr·cticos para calmar la ansiedad.' },
+        { url: 'https://www.youtube.com/embed/example1', caption: 'Consejos pr√°cticos para calmar la ansiedad.' },
         { url: 'https://www.youtube.com/embed/example2', caption: 'Estrategias para cuidar tu autoestima.' }
       ];
     }
@@ -71,17 +71,18 @@ export class PerfilProfesional implements OnInit {
   openWhatsApp() {
     if (!this.professional) return;
     const phone = this.professional.whatsappNumber.replace(/\D/g, '');
-    const text = encodeURIComponent(Hola , me gustarÌa agendar una sesiÛn contigo a travÈs de SerenaMente.);
-    const url = https://wa.me/?text=;
+    const text = encodeURIComponent('Hola ' + this.professional.name + ', me gustar√≠a agendar una sesi√≥n contigo a trav√©s de SerenaMente.');
+    const url = 'https://wa.me/' + phone + '?text=' + text;
     window.open(url, '_blank');
   }
 
   openGoogleCalendar() {
     if (!this.professional) return;
     const title = encodeURIComponent(this.professional.calendarTitle);
-    const details = encodeURIComponent(SesiÛn con  reservada desde SerenaMente.);
+    const details = encodeURIComponent('Sesi√≥n con ' + this.professional.name + ' reservada desde SerenaMente.');
     const location = encodeURIComponent(this.professional.location || '');
-    const url = https://calendar.google.com/calendar/render?action=TEMPLATE&text=&details=&location=;
+    const url = 'https://calendar.google.com/calendar/render?action=TEMPLATE&text=' + title + '&details=' + details + '&location=' + location;
     window.open(url, '_blank');
   }
 }
+

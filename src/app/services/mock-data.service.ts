@@ -35,7 +35,7 @@ export interface Recommendation {
 export class MockDataService {
   private currentUser: any = null;
   private tags: Tag[] = [
-    { id: 1, name: 'Estrés', icon: '\U0001F9D8\uFE0F' },
+    { id: 1, name: 'Estrï¿½s', icon: '\U0001F9D8\uFE0F' },
     { id: 2, name: 'Ansiedad', icon: '\U0001F630' },
     { id: 3, name: 'Depresi?n', icon: '\U0001F614' },
     { id: 4, name: 'Insomnio', icon: '\U0001F634' },
@@ -194,11 +194,11 @@ export class MockDataService {
       ...userData,
       createdAt: new Date().toISOString()
     };
-    localStorage.setItem('currentUser', JSON.stringify(this.currentUser));
+    localStorage.setItem('mockUser', JSON.stringify(this.currentUser));
   }
 
   login(email: string, password: string): boolean {
-    const stored = localStorage.getItem('currentUser');
+    const stored = localStorage.getItem('mockUser');
     if (stored) {
       const user = JSON.parse(stored);
       if (user.email === email) {
@@ -211,7 +211,6 @@ export class MockDataService {
 
   logout(): void {
     this.currentUser = null;
-    localStorage.removeItem('currentUser');
     localStorage.removeItem('mockUser');
     localStorage.removeItem('selectedTags');
     localStorage.removeItem('preferences');
@@ -219,7 +218,7 @@ export class MockDataService {
 
   getCurrentUser(): any {
     if (this.currentUser) return this.currentUser;
-    const stored = localStorage.getItem('currentUser');
+    const stored = localStorage.getItem('mockUser');
     if (stored) {
       this.currentUser = JSON.parse(stored);
     }
