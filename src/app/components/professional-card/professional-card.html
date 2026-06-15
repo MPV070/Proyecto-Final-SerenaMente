@@ -1,13 +1,31 @@
-<div class="card">
-  <h3 class="card-name">{{ name }}</h3>
+<ng-container *ngIf="link; else staticCard">
+  <a class="card card-link" [routerLink]="link">
+    <h3 class="card-name">{{ name }}</h3>
 
-  <p class="card-description">
-    {{ description }}
-  </p>
+    <p class="card-description">
+      {{ description }}
+    </p>
 
-  <div class="card-tags">
-    <span class="tag" *ngFor="let tag of tags">
-      {{ tag }}
-    </span>
+    <div class="card-tags">
+      <span class="tag" *ngFor="let tag of tags">
+        {{ tag }}
+      </span>
+    </div>
+  </a>
+</ng-container>
+
+<ng-template #staticCard>
+  <div class="card">
+    <h3 class="card-name">{{ name }}</h3>
+
+    <p class="card-description">
+      {{ description }}
+    </p>
+
+    <div class="card-tags">
+      <span class="tag" *ngFor="let tag of tags">
+        {{ tag }}
+      </span>
+    </div>
   </div>
-</div>
+</ng-template>

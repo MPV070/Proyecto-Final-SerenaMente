@@ -1,4 +1,5 @@
-.card {
+.card,
+.card-link {
   background: #ffffff;
   border-radius: 12px;
   padding: 1.5rem;
@@ -6,11 +7,15 @@
   transition: transform 0.2s ease, box-shadow 0.2s ease;
   cursor: pointer;
   border: 1px solid #eee;
+  text-decoration: none;
+  color: inherit;
+  display: block;
+}
 
-  &:hover {
-    transform: translateY(-4px);
-    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.12);
-  }
+.card:hover,
+.card-link:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.12);
 }
 
 .card-name {

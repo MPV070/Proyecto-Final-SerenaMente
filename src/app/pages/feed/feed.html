@@ -1,19 +1,38 @@
 <div class="feed-container">
+  <header class="feed-header">
+    <nav class="feed-navbar">
+      <a href="/">Inicio</a>
+      <a href="/feed" class="active">Feed</a>
+    </nav>
+    <div class="feed-welcome">
+      <h1>Bienvenido a tu feed</h1>
+      <p *ngIf="user">Hola, {{ user.name }}. Aquí están tus videos recomendados.</p>
+      <p *ngIf="!user">Inicia sesión para ver contenido personalizado.</p>
+    </div>
+  </header>
 
-  <div 
-    class="video-wrapper" 
+  <p class="error" *ngIf="instagramError">No se pudo cargar el feed de Instagram. Intenta más tarde.</p>
+
+  <div
+    class="video-wrapper"
     *ngFor="let video of videos; let i = index"
     [class.active]="i === currentIndex"
   >
-    <video 
-      #videoPlayer
-      class="feed-video"
-      [src]="video.url"
-      autoplay
-      muted
-      playsinline
-      (ended)="nextVideo()"
-    ></video>
+    <ng-container *ngIf="video.isVideo; else imageTpl">
+      <video
+        #videoPlayer
+        class="feed-video"
+        [src]="video.url"
+        controls
+        autoplay
+        muted
+        playsinline
+        (ended)="nextVideo()"
+      ></video>
+    </ng-container>
+    <ng-template #imageTpl>
+      <img class="feed-image" [src]="video.url" alt="{{ video.description || 'image' }}" />
+    </ng-template>
 
     <div class="video-info">
       <h3>{{ video.professionalName }}</h3>

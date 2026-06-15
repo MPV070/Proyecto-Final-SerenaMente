@@ -44,11 +44,17 @@ export class LoginComponent implements OnInit {
   }
 
   onSubmit() {
-    if (this.loginForm.invalid) return;
+    const user = {
+      email: this.loginForm.value.email,
+      name: 'Usuario de prueba'
+    };
 
+    localStorage.setItem('mockUser', JSON.stringify(user));
     console.log('Datos enviados:', this.loginForm.value);
 
     // Aquí conectarás tu backend:
     // this.authService.login(this.loginForm.value).subscribe(...)
+
+    this.router.navigate(['/feed']);
   }
 }

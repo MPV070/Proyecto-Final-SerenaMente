@@ -1,17 +1,20 @@
 <div class="profile-container">
-  <div class="profile-card">
+  <div class="profile-card" *ngIf="professional; else missingProfile">
 
     <!-- CABECERA PROFESIONAL -->
     <div class="profile-header">
       <div class="avatar">
         <img [src]="professional.photoUrl" alt="{{ professional.name }}" />
       </div>
+
       <div class="info">
         <h1>{{ professional.name }}</h1>
         <h2>{{ professional.specialty }}</h2>
+
         <p class="location" *ngIf="professional.location">
           {{ professional.location }}
         </p>
+
         <div class="tags">
           <span *ngFor="let tag of professional.tags">#{{ tag }}</span>
         </div>
@@ -32,7 +35,7 @@
     <!-- ACCIONES DE CITA -->
     <div class="profile-actions">
       <h3>Agenda una cita</h3>
-      <p>Elige cómo quieres contactar con {{ professional.name }}:</p>
+      <p>Elige cómo contactar con {{ professional.name }}:</p>
 
       <div class="buttons">
         <button class="btn-whatsapp" (click)="openWhatsApp()">
@@ -43,7 +46,39 @@
           Añadir a Google Calendar
         </button>
       </div>
+
+      <div class="back-link">
+        <a routerLink="/profesionales" class="btn btn-secondary">Volver a profesionales</a>
+      </div>
+    </div>
+
+    <!-- VIDEOS DEL PROFESIONAL -->
+    <div class="profile-videos" *ngIf="videos.length > 0">
+      <h3>Vídeos de {{ professional.name }}</h3>
+
+      <div class="videos-grid">
+        <div class="video-card" *ngFor="let v of videos">
+          <video 
+            [src]="v.url" 
+            controls 
+            playsinline 
+            preload="metadata">
+          </video>
+
+          <p class="video-caption">{{ v.caption }}</p>
+        </div>
+      </div>
     </div>
 
   </div>
 </div>
+
+<ng-template #missingProfile>
+  <div class="profile-container">
+    <div class="profile-card profile-missing">
+      <h2>Perfil no encontrado</h2>
+      <p>El profesional que buscas no está disponible en este momento.</p>
+      <a routerLink="/profesionales" class="btn btn-primary">Volver a profesionales</a>
+    </div>
+  </div>
+</ng-template>

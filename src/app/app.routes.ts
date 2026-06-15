@@ -4,6 +4,8 @@ import { Registro } from './pages/register/registro/registro';
 import { RegisterPreferencesComponent } from './pages/register/register-preferences/register-preferences.component';
 import { RegisterTagsComponent } from './pages/register/register-tags/register-tags.component';
 import { RegisterLegalComponent } from './pages/register/register-legal/register-legal.component';
+import { FeedComponent } from './pages/feed/feed';
+import { PerfilProfesional } from './pages/perfil-profesional/perfil-profesional';
 
 export const routes: Routes = [
   { path: '', component: HomeComponent },
@@ -24,6 +26,14 @@ export const routes: Routes = [
         .then(m => m.SobreNosotrosModule)
   },
 
+  {
+    path: 'feed',
+    component: FeedComponent
+  },
+  {
+    path: 'perfil-profesional/:id',
+    component: PerfilProfesional
+  },
   {
     path: 'login',
     loadChildren: () =>

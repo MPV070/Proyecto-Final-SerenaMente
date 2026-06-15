@@ -4,18 +4,16 @@ import { RouterModule } from '@angular/router';
 import { Profesionales } from './profesionales';
 import { ProfessionalCard } from '../../components/professional-card/professional-card';
 
-
-
 @NgModule({
   declarations: [
-    Profesionales,
-    ProfessionalCard
+    Profesionales
   ],
   imports: [
     CommonModule,
     RouterModule.forChild([
       { path: '', component: Profesionales }
-    ])
+    ]),
+    ProfessionalCard
   ]
 })
 export class ProfesionalesModule { }

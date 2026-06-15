@@ -17,7 +17,8 @@
         *ngFor="let p of psychologists"
         [name]="p.name"
         [description]="p.description"
-        [tags]="p.tags">
+        [tags]="p.tags"
+        [link]="['/perfil-profesional', p.id]">
       </app-professional-card>
     </div>
   </section>
@@ -31,7 +32,8 @@
         *ngFor="let c of coachs"
         [name]="c.name"
         [description]="c.description"
-        [tags]="c.tags">
+        [tags]="c.tags"
+        [link]="['/perfil-profesional', c.id]">
       </app-professional-card>
     </div>
   </section>
@@ -45,7 +47,8 @@
         *ngFor="let t of trainers"
         [name]="t.name"
         [description]="t.description"
-        [tags]="t.tags">
+        [tags]="t.tags"
+        [link]="['/perfil-profesional', t.id]">
       </app-professional-card>
     </div>
   </section>
@@ -59,7 +62,8 @@
         *ngFor="let n of nutrition"
         [name]="n.name"
         [description]="n.description"
-        [tags]="n.tags">
+        [tags]="n.tags"
+        [link]="['/perfil-profesional', n.id]">
       </app-professional-card>
     </div>
   </section>
@@ -73,7 +77,8 @@
         *ngFor="let a of activities"
         [name]="a.name"
         [description]="a.description"
-        [tags]="a.tags">
+        [tags]="a.tags"
+        [link]="['/perfil-profesional', a.id]">
       </app-professional-card>
     </div>
   </section>
