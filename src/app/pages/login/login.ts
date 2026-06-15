@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { AbstractControl, FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { Router, RouterModule } from '@angular/router';
 import { CommonModule } from '@angular/common';
+import { MockDataService } from '../../services/mock-data.service';
 
 @Component({
   selector: 'app-login',
@@ -17,7 +18,8 @@ export class LoginComponent implements OnInit {
 
   constructor(
     private fb: FormBuilder,
-    private router: Router
+    private router: Router,
+    private mockService: MockDataService
   ) {}
 
   get email(): AbstractControl {
@@ -44,15 +46,25 @@ export class LoginComponent implements OnInit {
   }
 
   onSubmit() {
-    const user = {
-      email: this.loginForm.value.email,
-      name: 'Usuario de prueba'
-    };
+    const email = this.loginForm.value.email;
+    const password = this.loginForm.value.password;
 
-    // Guardar usuario en localStorage
-    localStorage.setItem('mockUser', JSON.stringify(user));
-    console.log('Datos enviados:', this.loginForm.value);
+    // Usar el servicio mock para login
+    const success = this.mockService.login(email, password);
 
-    this.router.navigate(['/feed']);
+    if (success) {
+      console.log('Login exitoso');
+      this.router.navigate(['/feed']);
+    } else {
+      // Si no hay usuario registrado, crear uno temporal
+      const user = {
+        email: email,
+        name: 'Usuario de prueba'
+      };
+      this.mockService.register(user);
+      localStorage.setItem('mockUser', JSON.stringify(user));
+      console.log('Usuario creado temporalmente');
+      this.router.navigate(['/feed']);
+    }
   }
 }
