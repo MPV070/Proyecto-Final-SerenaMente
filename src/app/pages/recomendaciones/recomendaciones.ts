@@ -60,11 +60,6 @@ export class Recomendaciones implements OnInit {
     this.loadRecommendedProfessionals();
   }
 
-  getTagIcon(tagName: string): string {
-    const tag = this.allTags.find(t => t.name.toLowerCase() === tagName.toLowerCase());
-    return tag ? tag.icon : '\U0001F3F7\uFE0F';
-  }
-
   getRecommendationIcon(type: string): string {
     switch (type) {
       case 'video': return '\U0001F3A5';

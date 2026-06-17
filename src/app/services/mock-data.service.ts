@@ -16,7 +16,6 @@ export enum Modality {
 export interface Tag {
   id: number;
   name: string;
-  icon: string;
 }
 
 export interface UserProfile {
@@ -63,14 +62,14 @@ export interface Recommendation {
 export class MockDataService {
   private currentUser: any = null;
   private tags: Tag[] = [
-    { id: 1, name: 'Estrés', icon: '🧘' },
-    { id: 2, name: 'Ansiedad', icon: '😰' },
-    { id: 3, name: 'Depresión', icon: '😔' },
-    { id: 4, name: 'Insomnio', icon: '😴' },
-    { id: 5, name: 'Relaciones', icon: '💑' },
-    { id: 6, name: 'Trabajo', icon: '💼' },
-    { id: 7, name: 'Familia', icon: '👨‍👩‍👧‍👦' },
-    { id: 8, name: 'Autoestima', icon: '💪' }
+    { id: 1, name: 'Estrés' },
+    { id: 2, name: 'Ansiedad' },
+    { id: 3, name: 'Depresión' },
+    { id: 4, name: 'Insomnio' },
+    { id: 5, name: 'Relaciones' },
+    { id: 6, name: 'Trabajo' },
+    { id: 7, name: 'Familia' },
+    { id: 8, name: 'Autoestima' }
   ];
 
   private professionals: Professional[] = [
@@ -299,7 +298,7 @@ export class MockDataService {
   login(email: string, password: string): boolean {
     const cleanEmail = (email || '').trim().toLowerCase();
 
-    // Interceptar el usuario de prueba predefinido
+    
     if (cleanEmail === 'prueba@serenamente.com' && password === 'AC00k!e') {
       const testUser = {
         name: 'Perfil Prueba',
@@ -307,9 +306,9 @@ export class MockDataService {
         password: 'AC00k!e',
         preferences: { modalidad: 'ambas', profesional: 'psicologo' },
         tags: [
-          { id: 1, name: 'Estrés', icon: '🧘' },
-          { id: 2, name: 'Ansiedad', icon: '😰' },
-          { id: 8, name: 'Autoestima', icon: '💪' }
+          { id: 1, name: 'Estrés' },
+          { id: 2, name: 'Ansiedad' },
+          { id: 8, name: 'Autoestima' }
         ]
       };
       this.currentUser = testUser;
@@ -319,7 +318,7 @@ export class MockDataService {
       return true;
     }
 
-    // Interceptar el segundo usuario de prueba predefinido (Familia y Sueño)
+    // Segundo usuario de prueba predefinido (Familia y Sueño)
     if (cleanEmail === 'ejemplo@serenamente.com' && password === 'AC00k!e') {
       const testUser = {
         name: 'Perfil Familia y Sueño',
@@ -329,7 +328,7 @@ export class MockDataService {
         tags: [
           { id: 4, name: 'Insomnio' },
           { id: 5, name: 'Relaciones' },
-          { id: 7, name: 'Familia'}
+          { id: 7, name: 'Familia' }
         ]
       };
       this.currentUser = testUser;

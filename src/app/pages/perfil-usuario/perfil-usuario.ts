@@ -29,11 +29,6 @@ export class PerfilUsuario implements OnInit {
     }
   }
 
-  getTagIcon(tagName: string): string {
-    const tag = this.mockService.getTags().find(t => t.name.toLowerCase() === tagName.toLowerCase());
-    return tag ? tag.icon : '???';
-  }
-
   getModalidadLabel(modalidad: string): string {
     const map: { [key: string]: string } = {
       'online': 'Online 💻',
