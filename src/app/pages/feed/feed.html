@@ -1,5 +1,4 @@
-﻿<div class="feed-container">
-  <app-feed-navbar></app-feed-navbar>
+<div class="feed-container">
 
   <header class="feed-header">
     <div class="feed-welcome">
@@ -33,7 +32,10 @@
       <div class="video-info">
         <div class="video-topline">
           <span class="video-index">Video {{ i + 1 }}</span>
-          <a [routerLink]="['/perfil-profesional', video.professionalId]" class="video-source">
+          <a *ngIf="video.professionalId" [routerLink]="['/perfil-profesional', video.professionalId]" class="video-source">
+            {{ video.professionalName }}
+          </a>
+          <a *ngIf="!video.professionalId" href="https://www.instagram.com/serenamenteapp2026" target="_blank" rel="noopener noreferrer" class="video-source">
             {{ video.professionalName }}
           </a>
         </div>

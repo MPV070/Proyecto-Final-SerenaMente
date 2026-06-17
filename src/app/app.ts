@@ -1,7 +1,8 @@
-import { Component, signal } from '@angular/core';
+import { Component, signal, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { Router, NavigationEnd, RouterOutlet } from '@angular/router';
 import { NavbarComponent } from './core/navbar/navbar';
+import { FeedNavbarComponent } from './components/feed-navbar/feed-navbar';
 
 @Component({
   selector: 'app-root',
@@ -11,20 +12,31 @@ import { NavbarComponent } from './core/navbar/navbar';
   imports: [
     CommonModule,
     RouterOutlet,
-    NavbarComponent
+    NavbarComponent,
+    FeedNavbarComponent
   ]
 })
-export class App {
+export class App implements OnInit {
   protected readonly title = signal('Proyecto-Final-SerenaMente');
-  showNavbar = true;
+  isLoggedIn = false;
 
   constructor(private router: Router) {
     this.router.events.subscribe(event => {
       if (event instanceof NavigationEnd) {
-        const url = event.urlAfterRedirects || event.url;
-        const hideNavbarRoutes = ['/feed', '/recomendaciones', '/perfil-usuario', '/perfil-profesional'];
-        this.showNavbar = !hideNavbarRoutes.some(route => url.startsWith(route));
+        this.checkLoginStatus();
       }
     });
+  }
+
+  ngOnInit(): void {
+    this.checkLoginStatus();
+  }
+
+  checkLoginStatus(): void {
+    if (typeof localStorage !== 'undefined') {
+      this.isLoggedIn = !!localStorage.getItem('mockUser');
+    } else {
+      this.isLoggedIn = false;
+    }
   }
 }

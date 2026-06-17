@@ -5,6 +5,11 @@
       <p>Accede a tu cuenta de SerenaMente</p>
     </div>
 
+    <!-- Error general de login -->
+    <div *ngIf="loginError" class="login-error-message">
+      El correo electrónico o la contraseña son incorrectos. Por favor, compruébalos e inténtalo de nuevo o regístrate si no tienes cuenta.
+    </div>
+
     <form [formGroup]="loginForm" (ngSubmit)="onSubmit()" class="login-form">
 
       <!-- Email -->

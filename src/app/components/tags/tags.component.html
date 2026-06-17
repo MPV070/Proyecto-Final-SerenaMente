@@ -1,0 +1,12 @@
+<div class="tags-grid">
+  <button
+    type="button"
+    *ngFor="let tag of tags"
+    class="tag-card"
+    [class.selected]="isTagSelected(tag.id)"
+    [class.max-reached]="selectedTagIds.length >= maxTags && !isTagSelected(tag.id)"
+    (click)="toggleTag(tag)"
+  >
+    <span class="tag-name">{{ tag.name }}</span>
+  </button>
+</div>

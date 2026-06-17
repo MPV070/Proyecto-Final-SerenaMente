@@ -1,23 +1,46 @@
 <div class="register-tags-container">
   <h1 class="title">¿Con qué etiquetas te identificas?</h1>
-  <p class="subtitle">Selecciona las etiquetas que mejor te representen. Esta selección es opcional y puedes cambiarla más tarde.</p>
+  <p class="subtitle">Selecciona exactamente 3 etiquetas para continuar. Podrás cambiarlas en tu perfil en cualquier momento.</p>
 
-  <form [formGroup]="registerForm" class="tags-form">
-    <div class="tags-grid">
-      <div
-        *ngFor="let tag of tags; let i = index"
-        class="tag-card"
-        [class.selected]="isTagSelected(i)"
-        (click)="toggleTag(i)"
-      >
-        <div class="tag-icon"></div>
-        <span class="tag-name">{{ tag.name }}</span>
+  <div class="tags-form">
+    <!-- Componente de etiquetas funcional -->
+    <app-tags
+      [selectedTagIds]="selectedTagIds"
+      [maxTags]="3"
+      (selectedTagsChange)="onTagsChanged($event)"
+    ></app-tags>
+
+    <!-- Contador de etiquetas y feedback -->
+    <div class="counter-container">
+      <p class="counter-text" [class.completed]="selectedTagIds.length === 3">
+        <span *ngIf="selectedTagIds.length < 3">
+          Selecciona <strong>{{ 3 - selectedTagIds.length }}</strong> etiquetas más. ({{ selectedTagIds.length }}/3)
+        </span>
+        <span *ngIf="selectedTagIds.length === 3" class="success-message">
+          ¡Excelente! Has seleccionado exactamente 3 etiquetas.
+        </span>
+      </p>
+    </div>
+
+    <!-- Listado de etiquetas seleccionadas -->
+    <div class="selected-tags-preview" *ngIf="selectedTagsList.length > 0">
+      <p class="preview-title">Tus etiquetas seleccionadas:</p>
+      <div class="selected-tags-chips">
+        <span *ngFor="let tag of selectedTagsList" class="tag-chip">#{{ tag.name }}</span>
       </div>
     </div>
 
+
     <div class="buttons-container">
       <button type="button" class="btn btn-secondary" (click)="onBack()">Volver</button>
-      <button type="button" class="btn btn-primary" (click)="onContinue()">Continuar</button>
+      <button
+        type="button"
+        class="btn btn-primary"
+        [disabled]="selectedTagIds.length !== 3"
+        (click)="onContinue()"
+      >
+        Continuar
+      </button>
     </div>
-  </form>
+  </div>
 </div>

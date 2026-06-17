@@ -1,42 +1,61 @@
-<div class="register-legal-container">
-  <h1 class="title">Consentimientos legales</h1>
-  <p class="subtitle">Para completar tu registro, es necesario que aceptes los siguientes términos legales relacionados con el RGPD.</p>
+<div class="register-legal-container" [class.success]="accountCreated">
+  
+  <!-- FORMULARIO DE CONSENTIMIENTO -->
+  <ng-container *ngIf="!accountCreated">
+    <h1 class="title">Consentimientos legales</h1>
+    <p class="subtitle">Para completar tu registro, es necesario que aceptes los siguientes términos legales relacionados con el RGPD.</p>
 
-  <form [formGroup]="legalForm" class="legal-form">
-    <div class="consent-item">
-      <label class="checkbox-label">
-        <input type="checkbox" formControlName="termsAccepted" class="checkbox-input">
-        <span class="checkmark"></span>
-        Acepto los <a href="#" class="link">Términos y Condiciones</a>
-      </label>
-    </div>
+    <form [formGroup]="legalForm" class="legal-form">
+      <div class="consent-item">
+        <label class="checkbox-label">
+          <input type="checkbox" formControlName="termsAccepted" class="checkbox-input">
+          <span class="checkmark"></span>
+          <span>Acepto los <a href="#" class="link" (click)="$event.stopPropagation()">Términos y Condiciones</a></span>
+        </label>
+      </div>
 
-    <div class="consent-item">
-      <label class="checkbox-label">
-        <input type="checkbox" formControlName="privacyAccepted" class="checkbox-input">
-        <span class="checkmark"></span>
-        Acepto la <a href="#" class="link">Política de Privacidad</a>
-      </label>
-    </div>
+      <div class="consent-item">
+        <label class="checkbox-label">
+          <input type="checkbox" formControlName="privacyAccepted" class="checkbox-input">
+          <span class="checkmark"></span>
+          <span>Acepto la <a href="#" class="link" (click)="$event.stopPropagation()">Política de Privacidad</a></span>
+        </label>
+      </div>
 
-    <div class="consent-item">
-      <label class="checkbox-label">
-        <input type="checkbox" formControlName="dataTreatmentAccepted" class="checkbox-input">
-        <span class="checkmark"></span>
-        Acepto el tratamiento de datos sensibles relacionados con mi bienestar emocional
-      </label>
-    </div>
+      <div class="consent-item">
+        <label class="checkbox-label">
+          <input type="checkbox" formControlName="dataTreatmentAccepted" class="checkbox-input">
+          <span class="checkmark"></span>
+          <span>Acepto el tratamiento de datos sensibles relacionados con mi bienestar emocional</span>
+        </label>
+      </div>
 
-    <div class="buttons-container">
-      <button type="button" class="btn btn-secondary" (click)="onBack()">Volver</button>
-      <button
-        type="button"
-        class="btn btn-primary"
-        [disabled]="!allAccepted"
-        (click)="onCreateAccount()"
-      >
-        Crear cuenta
+      <div class="buttons-container">
+        <button type="button" class="btn btn-secondary" (click)="onBack()">Volver</button>
+        <button
+          type="button"
+          class="btn btn-primary"
+          [disabled]="!allAccepted"
+          (click)="onCreateAccount()"
+        >
+          Crear cuenta
+        </button>
+      </div>
+    </form>
+  </ng-container>
+
+  <!-- PANTALLA DE ÉXITO -->
+  <div class="success-screen" *ngIf="accountCreated">
+    <div class="success-icon">🎉</div>
+    <h2 class="success-title">¡Registro Completado!</h2>
+    <p class="success-message">Tu cuenta en SerenaMente ha sido creada de manera exitosa.</p>
+    <p class="success-submessage">Ya puedes iniciar sesión con tu correo electrónico y contraseña para acceder a tu feed personalizado.</p>
+    
+    <div class="buttons-container single-button">
+      <button type="button" class="btn btn-primary btn-next" (click)="onGoToLogin()">
+        Siguiente (Iniciar sesión)
       </button>
     </div>
-  </form>
+  </div>
+
 </div>

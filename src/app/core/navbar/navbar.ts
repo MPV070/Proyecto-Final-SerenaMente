@@ -19,7 +19,11 @@ export class NavbarComponent {
   }
 
   checkLoginStatus(): void {
-    this.isLoggedIn = !!localStorage.getItem('mockUser');
+    if (typeof localStorage !== 'undefined') {
+      this.isLoggedIn = !!localStorage.getItem('mockUser');
+    } else {
+      this.isLoggedIn = false;
+    }
   }
 
   navigationToRegister() {

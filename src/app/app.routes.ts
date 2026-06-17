@@ -8,6 +8,7 @@ import { FeedComponent } from './pages/feed/feed';
 import { PerfilProfesional } from './pages/perfil-profesional/perfil-profesional';
 import { PerfilUsuario } from './pages/perfil-usuario/perfil-usuario';
 import { Recomendaciones } from './pages/recomendaciones/recomendaciones';
+import { EnDesarrolloComponent } from './pages/en-desarrollo/en-desarrollo';
 
 export const routes: Routes = [
   { path: '', component: HomeComponent },
@@ -49,8 +50,9 @@ export const routes: Routes = [
   {
     path: 'recomendaciones',
     component: Recomendaciones
- }
-
-
-
+  },
+  {
+    path: 'en-desarrollo',
+    component: EnDesarrolloComponent
+  }
 ];

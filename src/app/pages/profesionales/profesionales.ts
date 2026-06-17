@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { MockDataService } from '../../services/mock-data.service';
 
 @Component({
   selector: 'app-profesionales',
@@ -6,55 +7,21 @@ import { Component } from '@angular/core';
   templateUrl: './profesionales.html',
   styleUrls: ['./profesionales.scss'],
 })
-export class Profesionales {
-  psychologists = [
-    {
-      id: 'laura-martinez',
-      name: 'Laura Martínez',
-      description: 'Psicóloga especializada en ansiedad, autoestima y gestión emocional.',
-      tags: ['Ansiedad', 'Autoestima', 'Terapia Online']
-    },
-    {
-      id: 'javier-torres',
-      name: 'Javier Torres',
-      description: 'Psicólogo cognitivo-conductual con experiencia en depresión y estrés laboral.',
-      tags: ['TCC', 'Depresión', 'Estrés']
-    }
-  ];
+export class Profesionales implements OnInit {
+  psychologists: any[] = [];
+  coachs: any[] = [];
+  trainers: any[] = [];
+  nutrition: any[] = [];
+  activities: any[] = [];
 
-  coachs = [
-    {
-      id: 'maria-delgado',
-      name: 'María Delgado',
-      description: 'Coach personal enfocada en crecimiento personal y gestión del cambio.',
-      tags: ['Crecimiento', 'Motivación', 'Cambio']
-    }
-  ];
+  constructor(private mockService: MockDataService) {}
 
-  trainers = [
-    {
-      id: 'ana-ruiz',
-      name: 'Ana Ruiz',
-      description: 'Entrenadora personal experta en tonificación y rutinas adaptadas.',
-      tags: ['Fitness', 'Tonificación', 'Rutinas']
-    }
-  ];
-
-  nutrition = [
-    {
-      id: 'elena-morales',
-      name: 'Elena Morales',
-      description: 'Nutricionista especializada en alimentación consciente y bienestar digestivo.',
-      tags: ['Nutrición', 'Digestión', 'Hábitos']
-    }
-  ];
-
-  activities = [
-    {
-      id: 'claudia-vega',
-      name: 'Claudia Vega',
-      description: 'Instructora de yoga enfocada en relajación, respiración y equilibrio.',
-      tags: ['Yoga', 'Relajación', 'Mindfulness']
-    }
-  ];
+  ngOnInit(): void {
+    const all = this.mockService.getAllProfessionals();
+    this.psychologists = all.filter(p => p.type === 'psicologo');
+    this.coachs = all.filter(p => p.type === 'coach');
+    this.trainers = all.filter(p => p.id === 'ana-ruiz');
+    this.nutrition = all.filter(p => p.id === 'elena-morales');
+    this.activities = all.filter(p => p.id === 'claudia-vega' || p.id === 'marta-gomez');
+  }
 }

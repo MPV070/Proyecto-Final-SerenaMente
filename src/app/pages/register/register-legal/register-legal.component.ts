@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ReactiveFormsModule, FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { MockDataService } from '../../../services/mock-data.service';
 
 @Component({
   selector: 'app-register-legal',
@@ -12,8 +13,13 @@ import { Router } from '@angular/router';
 })
 export class RegisterLegalComponent {
   legalForm: FormGroup;
+  accountCreated = false;
 
-  constructor(private fb: FormBuilder, private router: Router) {
+  constructor(
+    private fb: FormBuilder,
+    private router: Router,
+    private mockService: MockDataService
+  ) {
     this.legalForm = this.fb.group({
       termsAccepted: [false, Validators.requiredTrue],
       privacyAccepted: [false, Validators.requiredTrue],
@@ -31,10 +37,14 @@ export class RegisterLegalComponent {
 
   onCreateAccount(): void {
     if (this.legalForm.valid) {
+      this.mockService.finalizeRegistration();
+      this.accountCreated = true;
       console.log('Cuenta creada correctamente');
-      // Redirigir al feed después del registro
-      this.router.navigate(['/feed']);
     }
+  }
+
+  onGoToLogin(): void {
+    this.router.navigate(['/login']);
   }
 
   onBack(): void {

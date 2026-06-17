@@ -1,5 +1,4 @@
 <div class='profile-container'>
-  <app-feed-navbar></app-feed-navbar>
   <div class='profile-card' *ngIf='user; else notLoggedIn'>
 
     <!-- CABECERA -->
@@ -15,7 +14,6 @@
 
         <div class='tags'>
           <span *ngFor='let tag of user.tags' class='tag'>
-            <span class='tag-icon'>{{ getTagIcon(tag.name) }}</span>
             #{{ tag.name }}
           </span>
         </div>
@@ -28,11 +26,11 @@
       <div class='preferences-grid'>
         <div class='preference-item'>
           <strong>Modalidad:</strong>
-          <p>{{ user.preferences.modalidad || 'No especificada' }}</p>
+          <p>{{ getModalidadLabel(user.preferences.modalidad) }}</p>
         </div>
         <div class='preference-item'>
           <strong>Tipo de profesional:</strong>
-          <p>{{ user.preferences.profesional || 'No especificado' }}</p>
+          <p>{{ getProfesionalLabel(user.preferences.profesional) }}</p>
         </div>
       </div>
     </div>

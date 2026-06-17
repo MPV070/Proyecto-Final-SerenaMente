@@ -1,0 +1,32 @@
+{
+  "posts": [
+    {
+      "id": "insta_post_1",
+      "media_type": "VIDEO",
+      "media_url": "https://assets.mixkit.co/videos/preview/mixkit-slow-motion-of-a-woman-in-meditation-position-by-the-sea-41604-large.mp4",
+      "caption": "Encuentra tu paz interior. Tómate 60 segundos para respirar hondo y conectar con el presente. 🌊 #mindfulness #paz #respiracion",
+      "timestamp": "2026-06-17T06:00:00Z"
+    },
+    {
+      "id": "insta_post_2",
+      "media_type": "VIDEO",
+      "media_url": "https://assets.mixkit.co/videos/preview/mixkit-forest-stream-in-the-sunlight-529-large.mp4",
+      "caption": "Desconecta del estrés laboral. Escucha el sonido del agua y permite que tu mente descanse. 🌲 #antiestres #naturaleza #calma",
+      "timestamp": "2026-06-17T05:00:00Z"
+    },
+    {
+      "id": "insta_post_3",
+      "media_type": "VIDEO",
+      "media_url": "https://assets.mixkit.co/videos/preview/mixkit-woman-doing-yoga-stretches-on-the-beach-41614-large.mp4",
+      "caption": "Estiramientos simples para aliviar la tensión física provocada por la ansiedad. 🧘‍♀️ #yoga #bienestar #saludmental",
+      "timestamp": "2026-06-17T04:00:00Z"
+    },
+    {
+      "id": "insta_post_4",
+      "media_type": "VIDEO",
+      "media_url": "https://assets.mixkit.co/videos/preview/mixkit-woman-meditating-in-her-living-room-41617-large.mp4",
+      "caption": "Rutina nocturna para combatir el insomnio. Crea un espacio seguro y relaja tu cuerpo. 😴 #sueño #relajacion #insomnio",
+      "timestamp": "2026-06-17T03:00:00Z"
+    }
+  ]
+}

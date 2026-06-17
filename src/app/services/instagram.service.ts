@@ -13,13 +13,12 @@ export interface InstaPost {
 
 @Injectable({ providedIn: 'root' })
 export class InstagramService {
-  private base = 'https://instagram-scraper-api.serenamente.app/api/posts?username=';
+  private base = '/api_sample.json';
 
   constructor(private http: HttpClient) {}
 
   fetchPosts(username: string): Observable<InstaPost[]> {
-    const url = this.base + encodeURIComponent(username);
-    return this.http.get<any>(url).pipe(
+    return this.http.get<any>(this.base).pipe(
       map(res => {
         const list = res?.posts || res?.data || res?.items || res || [];
         if (!Array.isArray(list)) return [];

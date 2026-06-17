@@ -16,7 +16,7 @@
       <app-professional-card
         *ngFor="let p of psychologists"
         [name]="p.name"
-        [description]="p.description"
+        [description]="p.specialty + ' · ' + p.location"
         [tags]="p.tags"
         [link]="['/perfil-profesional', p.id]">
       </app-professional-card>
@@ -31,7 +31,7 @@
       <app-professional-card
         *ngFor="let c of coachs"
         [name]="c.name"
-        [description]="c.description"
+        [description]="c.specialty + ' · ' + c.location"
         [tags]="c.tags"
         [link]="['/perfil-profesional', c.id]">
       </app-professional-card>
@@ -46,7 +46,7 @@
       <app-professional-card
         *ngFor="let t of trainers"
         [name]="t.name"
-        [description]="t.description"
+        [description]="t.specialty + ' · ' + t.location"
         [tags]="t.tags"
         [link]="['/perfil-profesional', t.id]">
       </app-professional-card>
@@ -61,7 +61,7 @@
       <app-professional-card
         *ngFor="let n of nutrition"
         [name]="n.name"
-        [description]="n.description"
+        [description]="n.specialty + ' · ' + n.location"
         [tags]="n.tags"
         [link]="['/perfil-profesional', n.id]">
       </app-professional-card>
@@ -76,7 +76,7 @@
       <app-professional-card
         *ngFor="let a of activities"
         [name]="a.name"
-        [description]="a.description"
+        [description]="a.specialty + ' · ' + a.location"
         [tags]="a.tags"
         [link]="['/perfil-profesional', a.id]">
       </app-professional-card>

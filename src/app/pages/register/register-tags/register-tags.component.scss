@@ -1,13 +1,13 @@
 // Variables
-:root {
-  --serena-blue: #your-blue;
-  --serena-deep-blue: #your-deep-blue;
-  --serena-soft-gray: #your-soft-gray;
-  --serena-aqua: #your-aqua;
-  --serena-aqua-light: #your-aqua-light;
-  --serena-gold: #your-gold;
-  --serena-purple: #your-purple;
-  --serena-green: #your-green;
+:host {
+  --serena-blue: #069DBF;
+  --serena-deep-blue: #07235A;
+  --serena-soft-gray: #D6D6D6;
+  --serena-aqua: #04BFAD;
+  --serena-aqua-light: #9BF5E9;
+  --serena-gold: #E4B44E;
+  --serena-purple: #80296C;
+  --serena-green: #1E8572;
 }
 
 // Layout
@@ -100,8 +100,15 @@
     background-color: var(--serena-blue);
     color: white;
 
-    &:hover {
+    &:hover:not(:disabled) {
       background-color: var(--serena-green);
+    }
+
+    &:disabled {
+      opacity: 0.5;
+      cursor: not-allowed;
+      background-color: var(--serena-soft-gray);
+      color: var(--serena-deep-blue);
     }
   }
 
@@ -114,3 +121,78 @@
     }
   }
 }
+
+// Counter container styling
+.counter-container {
+  display: flex;
+  justify-content: center;
+  margin: 1.5rem 0;
+  padding: 0.75rem 1.25rem;
+  background-color: #f8fafc;
+  border-radius: 12px;
+  border: 1px dashed var(--serena-soft-gray);
+  transition: all 0.3s ease;
+}
+
+.counter-text {
+  font-size: 0.95rem;
+  color: var(--serena-deep-blue);
+  margin: 0;
+  text-align: center;
+  font-weight: 500;
+
+  strong {
+    color: var(--serena-blue);
+  }
+
+  &.completed {
+    color: #1a7f37;
+    
+    .success-message {
+      font-weight: 600;
+      color: #1a7f37;
+    }
+  }
+}
+
+// Selected Tags Preview Styling
+.selected-tags-preview {
+  margin: 1.5rem 0 2rem 0;
+  text-align: center;
+
+  .preview-title {
+    font-size: 0.95rem;
+    color: var(--serena-deep-blue);
+    font-weight: 600;
+    margin-bottom: 0.75rem;
+  }
+
+  .selected-tags-chips {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+  }
+
+  .tag-chip {
+    background-color: rgba(6, 157, 191, 0.08);
+    color: var(--serena-blue);
+    padding: 0.4rem 1rem;
+    border-radius: 999px;
+    font-size: 0.85rem;
+    font-weight: 600;
+    border: 1px solid rgba(6, 157, 191, 0.15);
+    animation: scaleIn 0.25s ease-out;
+  }
+}
+
+@keyframes scaleIn {
+  from {
+    transform: scale(0.9);
+    opacity: 0;
+  }
+  to {
+    transform: scale(1);
+    opacity: 1;
+  }
+}

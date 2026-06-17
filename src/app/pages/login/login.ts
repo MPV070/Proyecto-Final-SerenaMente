@@ -15,6 +15,7 @@ export class LoginComponent implements OnInit {
 
   loginForm!: FormGroup;
   passwordVisible: boolean = false;
+  loginError: boolean = false;
 
   constructor(
     private fb: FormBuilder,
@@ -46,6 +47,11 @@ export class LoginComponent implements OnInit {
   }
 
   onSubmit() {
+    if (this.loginForm.invalid) {
+      this.loginForm.markAllAsTouched();
+      return;
+    }
+
     const email = this.loginForm.value.email;
     const password = this.loginForm.value.password;
 
@@ -53,18 +59,12 @@ export class LoginComponent implements OnInit {
     const success = this.mockService.login(email, password);
 
     if (success) {
+      this.loginError = false;
       console.log('Login exitoso');
       this.router.navigate(['/feed']);
     } else {
-      // Si no hay usuario registrado, crear uno temporal
-      const user = {
-        email: email,
-        name: 'Usuario de prueba'
-      };
-      this.mockService.register(user);
-      localStorage.setItem('mockUser', JSON.stringify(user));
-      console.log('Usuario creado temporalmente');
-      this.router.navigate(['/feed']);
+      this.loginError = true;
+      console.log('Login fallido: usuario o contraseña incorrectos');
     }
   }
 }

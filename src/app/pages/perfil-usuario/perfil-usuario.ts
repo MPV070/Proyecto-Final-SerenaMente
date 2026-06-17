@@ -2,12 +2,11 @@ import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { Router } from '@angular/router';
 import { MockDataService, UserProfile } from '../../services/mock-data.service';
-import { FeedNavbarComponent } from '../../components/feed-navbar/feed-navbar';
 
 @Component({
   selector: 'app-perfil-usuario',
   standalone: true,
-  imports: [CommonModule, FeedNavbarComponent],
+  imports: [CommonModule],
   templateUrl: './perfil-usuario.html',
   styleUrls: ['./perfil-usuario.scss']
 })
@@ -33,6 +32,25 @@ export class PerfilUsuario implements OnInit {
   getTagIcon(tagName: string): string {
     const tag = this.mockService.getTags().find(t => t.name.toLowerCase() === tagName.toLowerCase());
     return tag ? tag.icon : '???';
+  }
+
+  getModalidadLabel(modalidad: string): string {
+    const map: { [key: string]: string } = {
+      'online': 'Online 💻',
+      'presencial': 'Presencial 🏢',
+      'ambas': 'Ambas (Online y Presencial) 🔄'
+    };
+    return map[modalidad] || modalidad || 'No especificada';
+  }
+
+  getProfesionalLabel(profesional: string): string {
+    const map: { [key: string]: string } = {
+      'psicologo': 'Psicólogo Clínico 🧠',
+      'terapeuta': 'Terapeuta 💬',
+      'coach': 'Coach Emocional ✨',
+      'nose': 'No lo sé todavía ❓'
+    };
+    return map[profesional] || profesional || 'No especificado';
   }
 
   editProfile(): void {

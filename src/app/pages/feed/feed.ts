@@ -4,7 +4,6 @@ import { HttpClientModule } from '@angular/common/http';
 import { RouterModule } from '@angular/router';
 import { InstagramService, InstaPost } from '../../services/instagram.service';
 import { MockDataService } from '../../services/mock-data.service';
-import { FeedNavbarComponent } from '../../components/feed-navbar/feed-navbar';
 
 interface MockUser {
   email: string;
@@ -14,7 +13,7 @@ interface MockUser {
 @Component({
   selector: 'app-feed',
   standalone: true,
-  imports: [CommonModule, HttpClientModule, RouterModule, FeedNavbarComponent],
+  imports: [CommonModule, HttpClientModule, RouterModule],
   templateUrl: './feed.html',
   styleUrls: ['./feed.scss']
 })
@@ -34,12 +33,14 @@ export class FeedComponent implements OnInit {
   }
 
   loadUser() {
-    const stored = localStorage.getItem('mockUser');
-    if (stored) {
-      try {
-        this.user = JSON.parse(stored) as MockUser;
-      } catch {
-        this.user = null;
+    if (typeof localStorage !== 'undefined') {
+      const stored = localStorage.getItem('mockUser');
+      if (stored) {
+        try {
+          this.user = JSON.parse(stored) as MockUser;
+        } catch {
+          this.user = null;
+        }
       }
     }
   }
@@ -47,7 +48,7 @@ export class FeedComponent implements OnInit {
   loadVideos() {
     this.videos = [
       {
-        url: 'https://interactive-examples.mdn.mozilla.net/media/cc0-videos/flower.mp4',
+        url: 'https://assets.mixkit.co/videos/preview/mixkit-slow-motion-of-a-woman-in-meditation-position-by-the-sea-41604-large.mp4',
         professionalId: 'laura-martinez',
         professionalName: 'Laura Martínez',
         description: 'Cómo gestionar la ansiedad en 60 segundos.',
@@ -55,7 +56,7 @@ export class FeedComponent implements OnInit {
         isVideo: true
       },
       {
-        url: 'https://interactive-examples.mdn.mozilla.net/media/cc0-videos/flower.mp4',
+        url: 'https://assets.mixkit.co/videos/preview/mixkit-woman-doing-yoga-stretches-on-the-beach-41614-large.mp4',
         professionalId: 'javier-torres',
         professionalName: 'Javier Torres',
         description: '3 claves para mejorar tu autoestima.',

@@ -25,7 +25,9 @@ export class RegisterPreferencesComponent {
     onSubmit() {
         if (this.preferencesForm.valid) {
             // Guardar preferencias en localStorage
-            localStorage.setItem('preferences', JSON.stringify(this.preferencesForm.value));
+            if (typeof localStorage !== 'undefined') {
+                localStorage.setItem('preferences', JSON.stringify(this.preferencesForm.value));
+            }
             console.log('Preferences submitted:', this.preferencesForm.value);
             this.router.navigate(['/registro/etiquetas']);
         } else {

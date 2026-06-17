@@ -164,3 +164,17 @@
     transform: translateY(0) scale(1);
   }
 }
+
+.login-error-message {
+  background-color: rgba(map.get($palette, purple), 0.08);
+  color: map.get($palette, purple);
+  padding: 1rem 1.25rem;
+  border-radius: $radius-md;
+  border: 1.5px solid rgba(map.get($palette, purple), 0.25);
+  font-size: 0.95rem;
+  margin-bottom: 1.5rem;
+  text-align: center;
+  font-weight: 500;
+  line-height: 1.4;
+  animation: slideUp 0.35s ease-out;
+}

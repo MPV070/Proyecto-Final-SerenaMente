@@ -2,13 +2,12 @@ import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
 import { MockDataService, Recommendation, Tag } from '../../services/mock-data.service';
-import { FeedNavbarComponent } from '../../components/feed-navbar/feed-navbar';
 import { ProfessionalCard } from '../../components/professional-card/professional-card';
 
 @Component({
   selector: 'app-recomendaciones',
   standalone: true,
-  imports: [CommonModule, RouterModule, FeedNavbarComponent, ProfessionalCard],
+  imports: [CommonModule, RouterModule, ProfessionalCard],
   templateUrl: './recomendaciones.html',
   styleUrls: ['./recomendaciones.scss']
 })
@@ -25,14 +24,14 @@ export class Recomendaciones implements OnInit {
     this.allTags = this.mockService.getTags();
     this.loadUserTags();
     this.loadRecommendations();
-    this.professionals = this.mockService.getAllProfessionals();
+    this.loadRecommendedProfessionals();
   }
 
   loadUserTags(): void {
     const user = this.mockService.getUserProfile();
     if (user && user.tags && user.tags.length > 0) {
       this.userTags = user.tags;
-      this.selectedTags = user.tags;
+      this.selectedTags = [...user.tags];
     }
   }
 
@@ -44,6 +43,12 @@ export class Recomendaciones implements OnInit {
     }
   }
 
+  loadRecommendedProfessionals(): void {
+    const user = this.mockService.getUserProfile();
+    const prefs = user ? user.preferences : { modalidad: 'ambas', profesional: 'nose' };
+    this.professionals = this.mockService.getRecommendedProfessionals(this.selectedTags, prefs);
+  }
+
   toggleTag(tag: Tag): void {
     const index = this.selectedTags.findIndex(t => t.id === tag.id);
     if (index > -1) {
@@ -52,6 +57,7 @@ export class Recomendaciones implements OnInit {
       this.selectedTags.push(tag);
     }
     this.loadRecommendations();
+    this.loadRecommendedProfessionals();
   }
 
   getTagIcon(tagName: string): string {

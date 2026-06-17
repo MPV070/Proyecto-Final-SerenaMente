@@ -43,7 +43,8 @@ export class Registro {
     if (this.registerForm.valid) {
       const userData = {
         name: this.registerForm.value.nombreCompleto,
-        email: this.registerForm.value.email
+        email: this.registerForm.value.email,
+        password: this.registerForm.value.password
       };
       this.mockService.register(userData);
       this.router.navigate(['/registro/preferencias']);

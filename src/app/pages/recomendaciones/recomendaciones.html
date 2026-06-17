@@ -1,5 +1,4 @@
 <div class='recomendaciones-container'>
-  <app-feed-navbar></app-feed-navbar>
 
   <header class='recomendaciones-header'>
     <h1>Recomendaciones para ti</h1>
@@ -16,7 +15,6 @@
         [class.selected]='selectedTags.includes(tag)'
         (click)='toggleTag(tag)'
       >
-        <span class='tag-icon'>{{ tag.icon }}</span>
         <span class='tag-name'>{{ tag.name }}</span>
       </div>
     </div>
@@ -44,7 +42,16 @@
             <span *ngFor='let tag of rec.tags' class='card-tag'>#{{ tag }}</span>
           </div>
         </div>
-        <a [href]='rec.url' target='_blank' class='btn btn-primary'>Ver contenido</a>
+        <a 
+          *ngIf="rec.url && rec.url !== '#'; else devTpl" 
+          [href]='rec.url' 
+          target='_blank' 
+          class='btn btn-primary'>
+          Ver contenido
+        </a>
+        <ng-template #devTpl>
+          <a routerLink='/en-desarrollo' class='btn btn-primary'>Ver contenido</a>
+        </ng-template>
       </article>
     </div>
   </section>

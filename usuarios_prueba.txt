@@ -1,0 +1,29 @@
+========================================================================
+                      USUARIOS DE PRUEBA - SERENAMENTE
+========================================================================
+
+A continuación se detallan las credenciales de los usuarios predefinidos
+en el sistema para las pruebas del panel de recomendaciones y algoritmos:
+
+------------------------------------------------------------------------
+1. USUARIO DE PRUEBA 1: "Perfil Prueba" (Estrés y Ansiedad)
+------------------------------------------------------------------------
+- Correo Electrónico: prueba@serenamente.com
+- Contraseña:         AC00k!e
+- Etiquetas:          Estrés, Ansiedad, Autoestima
+- Preferencias:       Modalidad: Ambas (Online y Presencial)
+                      Tipo de Profesional: Psicólogo Clínico
+
+------------------------------------------------------------------------
+2. USUARIO DE PRUEBA 2: "Perfil Familia y Sueño" (Familia y Sueño)
+------------------------------------------------------------------------
+- Correo Electrónico: ejemplo@serenamente.com
+- Contraseña:         AC00k!e
+- Etiquetas:          Insomnio, Relaciones, Familia
+- Preferencias:       Modalidad: Online
+                      Tipo de Profesional: Terapeuta
+
+========================================================================
+Nota: Ambos perfiles se autogeneran e inicializan con datos completos
+al iniciar sesión con estas credenciales.
+========================================================================
