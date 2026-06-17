@@ -23,7 +23,7 @@ export const routes: Routes = [
         .then(m => m.ProfesionalesModule)
   },
   {
-    path: 'sobreNosotros',
+    path: 'sobre-nosotros',
     loadChildren: () =>
       import('./pages/sobre-nosotros/sobre-nosotros-module')
         .then(m => m.SobreNosotrosModule)
