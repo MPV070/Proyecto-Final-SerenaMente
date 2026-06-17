@@ -1,16 +1,20 @@
 import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { RouterModule } from '@angular/router';
 import { MockDataService, Recommendation, Tag } from '../../services/mock-data.service';
+import { FeedNavbarComponent } from '../../components/feed-navbar/feed-navbar';
+import { ProfessionalCard } from '../../components/professional-card/professional-card';
 
 @Component({
   selector: 'app-recomendaciones',
   standalone: true,
-  imports: [CommonModule],
+  imports: [CommonModule, RouterModule, FeedNavbarComponent, ProfessionalCard],
   templateUrl: './recomendaciones.html',
   styleUrls: ['./recomendaciones.scss']
 })
 export class Recomendaciones implements OnInit {
   recommendations: Recommendation[] = [];
+  professionals: any[] = [];
   allTags: Tag[] = [];
   selectedTags: Tag[] = [];
   userTags: Tag[] = [];
@@ -21,6 +25,7 @@ export class Recomendaciones implements OnInit {
     this.allTags = this.mockService.getTags();
     this.loadUserTags();
     this.loadRecommendations();
+    this.professionals = this.mockService.getAllProfessionals();
   }
 
   loadUserTags(): void {

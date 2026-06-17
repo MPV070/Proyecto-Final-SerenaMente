@@ -1,4 +1,5 @@
 <div class='recomendaciones-container'>
+  <app-feed-navbar></app-feed-navbar>
 
   <header class='recomendaciones-header'>
     <h1>Recomendaciones para ti</h1>
@@ -45,6 +46,19 @@
         </div>
         <a [href]='rec.url' target='_blank' class='btn btn-primary'>Ver contenido</a>
       </article>
+    </div>
+  </section>
+
+  <section class='professionals-section'>
+    <h2>Profesionales recomendados</h2>
+    <div class='professionals-grid'>
+      <app-professional-card
+        *ngFor='let prof of professionals'
+        [name]='prof.name'
+        [description]='prof.specialty + " · " + prof.location'
+        [tags]='prof.tags'
+        [link]='["/perfil-profesional", prof.id]'
+      ></app-professional-card>
     </div>
   </section>
 </div>

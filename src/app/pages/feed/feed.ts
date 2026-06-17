@@ -1,7 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { HttpClientModule } from '@angular/common/http';
+import { RouterModule } from '@angular/router';
 import { InstagramService, InstaPost } from '../../services/instagram.service';
+import { MockDataService } from '../../services/mock-data.service';
 import { FeedNavbarComponent } from '../../components/feed-navbar/feed-navbar';
 
 interface MockUser {
@@ -12,8 +14,7 @@ interface MockUser {
 @Component({
   selector: 'app-feed',
   standalone: true,
-  imports: [CommonModule, HttpClientModule, FeedNavbarComponent],
-
+  imports: [CommonModule, HttpClientModule, RouterModule, FeedNavbarComponent],
   templateUrl: './feed.html',
   styleUrls: ['./feed.scss']
 })
@@ -24,7 +25,7 @@ export class FeedComponent implements OnInit {
   user: MockUser | null = null;
   instagramError = false;
 
-  constructor(private instagram: InstagramService) {}
+  constructor(private instagram: InstagramService, private mockService: MockDataService) {}
 
   ngOnInit() {
     this.loadUser();
@@ -46,15 +47,17 @@ export class FeedComponent implements OnInit {
   loadVideos() {
     this.videos = [
       {
-        url: 'assets/videos/ansiedad1.mp4',
+        url: 'https://interactive-examples.mdn.mozilla.net/media/cc0-videos/flower.mp4',
+        professionalId: 'laura-martinez',
         professionalName: 'Laura Martínez',
         description: 'Cómo gestionar la ansiedad en 60 segundos.',
         tags: ['ansiedad', 'respiración', 'calma'],
         isVideo: true
       },
       {
-        url: 'assets/videos/autoestima1.mp4',
-        professionalName: 'Carlos López',
+        url: 'https://interactive-examples.mdn.mozilla.net/media/cc0-videos/flower.mp4',
+        professionalId: 'javier-torres',
+        professionalName: 'Javier Torres',
         description: '3 claves para mejorar tu autoestima.',
         tags: ['autoestima', 'motivación'],
         isVideo: true

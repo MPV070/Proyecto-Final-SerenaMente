@@ -1,7 +1,8 @@
-<div class="feed-container">
+﻿<div class="feed-container">
+  <app-feed-navbar></app-feed-navbar>
+
   <header class="feed-header">
-<app-feed-navbar></app-feed-navbar>
-  <div class="feed-welcome">
+    <div class="feed-welcome">
       <h1>Bienvenido a tu feed</h1>
       <p *ngIf="user">Hola, {{ user.name }}. Aquí están tus videos recomendados.</p>
       <p *ngIf="!user">Inicia sesión para ver contenido personalizado.</p>
@@ -10,35 +11,37 @@
 
   <p class="error" *ngIf="instagramError">No se pudo cargar el feed de Instagram. Intenta más tarde.</p>
 
-  <div
-    class="video-wrapper"
-    *ngFor="let video of videos; let i = index"
-    [class.active]="i === currentIndex"
-  >
-    <ng-container *ngIf="video.isVideo; else imageTpl">
-      <video
-        #videoPlayer
-        class="feed-video"
-        [src]="video.url"
-        controls
-        autoplay
-        muted
-        playsinline
-        (ended)="nextVideo()"
-      ></video>
-    </ng-container>
-    <ng-template #imageTpl>
-      <img class="feed-image" [src]="video.url" alt="{{ video.description || 'image' }}" />
-    </ng-template>
-
-    <div class="video-info">
-      <h3>{{ video.professionalName }}</h3>
-      <p>{{ video.description }}</p>
-
-      <div class="tags">
-        <span *ngFor="let tag of video.tags">#{{ tag }}</span>
+  <section class="video-list">
+    <article class="video-card" *ngFor="let video of videos; let i = index">
+      <div class="video-media">
+        <ng-container *ngIf="video.isVideo; else imageTpl">
+          <video
+            class="feed-video"
+            [src]="video.url"
+            controls
+            autoplay
+            muted
+            playsinline
+            (ended)="nextVideo()"
+          ></video>
+        </ng-container>
+        <ng-template #imageTpl>
+          <img class="feed-image" [src]="video.url" alt="{{ video.description || 'image' }}" />
+        </ng-template>
       </div>
-    </div>
-  </div>
 
+      <div class="video-info">
+        <div class="video-topline">
+          <span class="video-index">Video {{ i + 1 }}</span>
+          <a [routerLink]="['/perfil-profesional', video.professionalId]" class="video-source">
+            {{ video.professionalName }}
+          </a>
+        </div>
+        <h2>{{ video.description }}</h2>
+        <div class="tags">
+          <span *ngFor="let tag of video.tags">#{{ tag }}</span>
+        </div>
+      </div>
+    </article>
+  </section>
 </div>

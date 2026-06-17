@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterModule, Router } from '@angular/router';
 import { FormBuilder, FormGroup, ReactiveFormsModule, Validators, AbstractControl, ValidationErrors } from '@angular/forms';
-import { MockDataService } from '../../services/mock-data.service';
+import { MockDataService } from '../../../services/mock-data.service';
 
 @Component({
   selector: 'app-registro',
@@ -73,7 +73,7 @@ export class Registro {
       'Admin123!', 'Welcome1!', 'Qwerty123!', 'Test1234!'
     ];
     if (blocklist.includes(value)) {
-      return { blocklisted: 'Esta contraseña es demasiado comun' };
+      return { blocklisted: 'Esta contraseï¿½a es demasiado comun' };
     }
 
     return null;

@@ -1,27 +1,13 @@
-import { Component } from '@angular/core';
-import { Router } from '@angular/router';
+﻿import { Component } from '@angular/core';
+import { CommonModule } from '@angular/common';
+import { RouterModule } from '@angular/router';
 
 @Component({
   selector: 'app-feed-navbar',
   standalone: true,
-  imports: [],
+  imports: [CommonModule, RouterModule],
   templateUrl: './feed-navbar.html',
   styleUrls: ['./feed-navbar.scss'],
 })
 
-export class FeedNavbarComponent {
-
-  constructor(private router: Router) {}
-
-  goToFeed() {
-    this.router.navigate(['/feed']);
-  }
-
-  goToExplore() {
-    this.router.navigate(['/explore']);
-  }
-
-  goToProfile() {
-    this.router.navigate(['/profile']);
-  }
-}
+export class FeedNavbarComponent {}

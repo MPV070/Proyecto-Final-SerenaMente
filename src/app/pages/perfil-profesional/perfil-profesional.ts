@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, RouterModule } from '@angular/router';
 import { CommonModule } from '@angular/common';
 import { MockDataService } from '../../services/mock-data.service';
+import { FeedNavbarComponent } from '../../components/feed-navbar/feed-navbar';
 
 interface ProfessionalProfile {
   id: string;
@@ -19,7 +20,7 @@ interface ProfessionalProfile {
 @Component({
   selector: 'app-perfil-profesional',
   standalone: true,
-  imports: [CommonModule, RouterModule],
+  imports: [CommonModule, RouterModule, FeedNavbarComponent],
   templateUrl: './perfil-profesional.html',
   styleUrls: ['./perfil-profesional.scss']
 })

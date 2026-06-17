@@ -1,18 +1,8 @@
 <nav class="feed-navbar">
-
-  <button class="nav-btn" (click)="goToFeed()">
-    <span class="material-icons">home</span>
-    <p>Inicio</p>
-  </button>
-
-  <button class="nav-btn" (click)="goToExplore()">
-    <span class="material-icons">search</span>
-    <p>Explorar</p>
-  </button>
-
-  <button class="nav-btn" (click)="goToProfile()">
-    <span class="material-icons">person</span>
-    <p>Perfil</p>
-  </button>
-
+  <div class="feed-navbar-brand">SerenaMente</div>
+  <div class="feed-navbar-links">
+    <a routerLink="/feed" routerLinkActive="active" class="feed-link">Feed</a>
+    <a routerLink="/recomendaciones" routerLinkActive="active" class="feed-link">Recomendaciones</a>
+    <a routerLink="/perfil-usuario" routerLinkActive="active" class="feed-link">Perfil</a>
+  </div>
 </nav>

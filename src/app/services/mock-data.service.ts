@@ -35,9 +35,9 @@ export interface Recommendation {
 export class MockDataService {
   private currentUser: any = null;
   private tags: Tag[] = [
-    { id: 1, name: 'Estr�s', icon: '\U0001F9D8\uFE0F' },
+    { id: 1, name: 'Estrés', icon: '\U0001F9D8\uFE0F' },
     { id: 2, name: 'Ansiedad', icon: '\U0001F630' },
-    { id: 3, name: 'Depresi?n', icon: '\U0001F614' },
+    { id: 3, name: 'Depresión', icon: '\U0001F614' },
     { id: 4, name: 'Insomnio', icon: '\U0001F634' },
     { id: 5, name: 'Relaciones', icon: '\U0001F491' },
     { id: 6, name: 'Trabajo', icon: '\U0001F4BC' },
@@ -48,126 +48,126 @@ export class MockDataService {
   private professionals: any[] = [
     {
       id: 'laura-martinez',
-      name: 'Laura Mart?ez',
-      specialty: 'Psic?loga Cl?nica',
-      location: 'Online ? Espa?a',
+      name: 'Laura Martínez',
+      specialty: 'Psicóloga Clínica',
+      location: 'Online - España',
       photoUrl: 'https://randomuser.me/api/portraits/women/44.jpg',
       tags: ['ansiedad', 'autoestima', 'terapia online'],
-      bio: 'Te acompa?o a entender tus emociones, gestionar la ansiedad y construir una relaci?n m?s sana contigo misma.',
+      bio: 'Te acompaño a entender tus emociones, gestionar la ansiedad y construir una relación más sana contigo misma.',
       specialties: [
-        'Ansiedad y ataques de p?nico',
-        'Autoestima y autocr?tica',
-        'Gesti?n emocional',
+        'Ansiedad y ataques de pánico',
+        'Autoestima y autocrítica',
+        'Gestión emocional',
         'Terapia online'
       ],
       whatsappNumber: '+34623227167',
-      calendarTitle: 'Sesi?n con Laura Mart?ez'
+      calendarTitle: 'Sesión con Laura Martínez'
     },
     {
       id: 'javier-torres',
       name: 'Javier Torres',
-      specialty: 'Psic?logo Cognitivo-Conductual',
-      location: 'Online ? Espa?a',
+      specialty: 'Psicólogo Cognitivo-Conductual',
+      location: 'Online - España',
       photoUrl: 'https://randomuser.me/api/portraits/men/32.jpg',
-      tags: ['tcc', 'depresi?n', 'estr?s'],
-      bio: 'Acompa?o a personas a encontrar herramientas pr?cticas para manejar el estr?s y recuperar equilibrio emocional.',
+      tags: ['tcc', 'depresión', 'estrés'],
+      bio: 'Acompaño a personas a encontrar herramientas prácticas para manejar el estrés y recuperar equilibrio emocional.',
       specialties: [
-        'Depresi?n',
-        'Estr?s laboral',
+        'Depresión',
+        'Estrés laboral',
         'Autocuidado emocional',
         'Terapia cognitivo-conductual'
       ],
       whatsappNumber: '+34612345678',
-      calendarTitle: 'Sesi?n con Javier Torres'
+      calendarTitle: 'Sesión con Javier Torres'
     },
     {
       id: 'maria-delgado',
-      name: 'Mar?a Delgado',
+      name: 'María Delgado',
       specialty: 'Coach Personal',
-      location: 'Online ? Espa?a',
+      location: 'Online - España',
       photoUrl: 'https://randomuser.me/api/portraits/women/68.jpg',
-      tags: ['crecimiento', 'motivaci?n', 'cambio'],
-      bio: 'Te ayudo a dise?ar un plan personal que te permita avanzar con seguridad hacia tus metas.',
+      tags: ['crecimiento', 'motivación', 'cambio'],
+      bio: 'Te ayudo a diseñar un plan personal que te permita avanzar con seguridad hacia tus metas.',
       specialties: [
         'Objetivos personales',
-        'Cambio de h?bitos',
-        'Motivaci?n',
-        'Gesti?n del cambio'
+        'Cambio de hábitos',
+        'Motivación',
+        'Gestión del cambio'
       ],
       whatsappNumber: '+34698765432',
-      calendarTitle: 'Sesi?n con Mar?a Delgado'
+      calendarTitle: 'Sesión con María Delgado'
     },
     {
       id: 'ana-ruiz',
       name: 'Ana Ruiz',
       specialty: 'Entrenadora Personal',
-      location: 'Barcelona ? Espa?a',
+      location: 'Barcelona - España',
       photoUrl: 'https://randomuser.me/api/portraits/women/65.jpg',
-      tags: ['fitness', 'tonificaci?n', 'rutinas'],
-      bio: 'Creo entrenamientos personalizados para ayudarte a fortalecer el cuerpo y sentirte con m?s energ?a.',
+      tags: ['fitness', 'tonificación', 'rutinas'],
+      bio: 'Creo entrenamientos personalizados para ayudarte a fortalecer el cuerpo y sentirte con más energía.',
       specialties: [
         'Entrenamiento funcional',
-        'Tonificaci?n',
+        'Tonificación',
         'Rutinas adaptadas',
-        'Bienestar f?sico'
+        'Bienestar físico'
       ],
       whatsappNumber: '+34611122233',
-      calendarTitle: 'Sesi?n con Ana Ruiz'
+      calendarTitle: 'Sesión con Ana Ruiz'
     },
     {
       id: 'elena-morales',
       name: 'Elena Morales',
       specialty: 'Nutricionista',
-      location: 'Madrid ? Espa?a',
+      location: 'Madrid - España',
       photoUrl: 'https://randomuser.me/api/portraits/women/43.jpg',
-      tags: ['nutrici?n', 'digesti?n', 'h?bitos'],
-      bio: 'Te acompa?o a mejorar tu relaci?n con la comida desde la escucha y el respeto a tu cuerpo.',
+      tags: ['nutrición', 'digestión', 'hábitos'],
+      bio: 'Te acompaño a mejorar tu relación con la comida desde la escucha y el respeto a tu cuerpo.',
       specialties: [
-        'Alimentaci?n consciente',
+        'Alimentación consciente',
         'Bienestar digestivo',
-        'H?bitos saludables',
+        'Hábitos saludables',
         'Plan nutricional personalizado'
       ],
       whatsappNumber: '+34644455566',
-      calendarTitle: 'Sesi?n con Elena Morales'
+      calendarTitle: 'Sesión con Elena Morales'
     },
     {
       id: 'claudia-vega',
       name: 'Claudia Vega',
       specialty: 'Instructora de Yoga',
-      location: 'Online ? Espa?a',
+      location: 'Online - España',
       photoUrl: 'https://randomuser.me/api/portraits/women/52.jpg',
-      tags: ['yoga', 'relajaci?n', 'mindfulness'],
-      bio: 'Con pr?cticas suaves y conscientes, te ayudo a reconectar con tu cuerpo y tu respiraci?n.',
+      tags: ['yoga', 'relajación', 'mindfulness'],
+      bio: 'Con prácticas suaves y conscientes, te ayudo a reconectar con tu cuerpo y tu respiración.',
       specialties: [
         'Yoga restaurativo',
-        'Respiraci?n',
-        'Relajaci?n',
+        'Respiración',
+        'Relajación',
         'Mindfulness'
       ],
       whatsappNumber: '+34677788899',
-      calendarTitle: 'Sesi?n con Claudia Vega'
+      calendarTitle: 'Sesión con Claudia Vega'
     }
   ];
 
   private recommendations: Recommendation[] = [
     {
       id: 1,
-      title: 'T?cnicas de respiraci?n para la ansiedad',
-      description: 'Aprende a calmar tu mente con estas t?cnicas simples.',
+      title: 'Técnicas de respiración para la ansiedad',
+      description: 'Aprende a calmar tu mente con estas técnicas simples.',
       type: 'video',
       url: 'https://www.youtube.com/embed/example1',
-      tags: ['ansiedad', 'respiraci?n'],
-      professionalName: 'Laura Mart?ez'
+      tags: ['ansiedad', 'respiración'],
+      professionalName: 'Laura Martínez'
     },
     {
       id: 2,
-      title: 'C?mo mejorar tu autoestima',
-      description: 'Peque?os pasos para sentirte mejor contigo mismo.',
+      title: 'Cómo mejorar tu autoestima',
+      description: 'Pequeños pasos para sentirte mejor contigo mismo.',
       type: 'article',
       url: '#',
-      tags: ['autoestima', 'motivaci?n'],
-      professionalName: 'Mar?a Delgado'
+      tags: ['autoestima', 'motivación'],
+      professionalName: 'María Delgado'
     },
     {
       id: 3,
@@ -180,11 +180,11 @@ export class MockDataService {
     },
     {
       id: 4,
-      title: 'Ejercicios para manejar el estr?s laboral',
-      description: 'Herramientas pr?cticas para tu d?a a d?a.',
+      title: 'Ejercicios para manejar el estrés laboral',
+      description: 'Herramientas prácticas para tu día a día.',
       type: 'exercise',
       url: '#',
-      tags: ['estr?s', 'trabajo'],
+      tags: ['estrés', 'trabajo'],
       professionalName: 'Javier Torres'
     }
   ];

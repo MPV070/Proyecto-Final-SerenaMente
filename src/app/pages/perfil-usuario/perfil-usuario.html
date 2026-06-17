@@ -1,4 +1,5 @@
 <div class='profile-container'>
+  <app-feed-navbar></app-feed-navbar>
   <div class='profile-card' *ngIf='user; else notLoggedIn'>
 
     <!-- CABECERA -->
@@ -41,7 +42,7 @@
       <h3>Mi Cuenta</h3>
       <div class='buttons'>
         <button class='btn btn-primary' (click)='editProfile()'>Editar Perfil</button>
-        <button class='btn btn-secondary' (click)='logout()'>Cerrar Sesión</button>
+        <button class='btn btn-secondary' (click)='logout()'>Cerrar SesiÃ³n</button>
       </div>
     </div>
   </div>
@@ -50,9 +51,9 @@
 <ng-template #notLoggedIn>
   <div class='profile-container'>
     <div class='profile-card profile-missing'>
-      <h2>No has iniciado sesión</h2>
-      <p>Para ver tu perfil, por favor inicia sesión.</p>
-      <a href='/login' class='btn btn-primary'>Iniciar Sesión</a>
+      <h2>No has iniciado sesiï¿½n</h2>
+      <p>Para ver tu perfil, por favor inicia sesiï¿½n.</p>
+      <a href='/login' class='btn btn-primary'>Iniciar Sesiï¿½n</a>
     </div>
   </div>
 </ng-template>
