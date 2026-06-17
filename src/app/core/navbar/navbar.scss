@@ -124,29 +124,112 @@
 }
 
 // ============================================
+// COLLAPSE & TOGGLE STYLES
+// ============================================
+.menu-toggle {
+  display: none;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 24px;
+  height: 18px;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  z-index: 1010;
+
+  .bar {
+    width: 100%;
+    height: 2px;
+    background-color: map.get($palette, dark-blue);
+    border-radius: 4px;
+    transition: all 0.3s ease;
+  }
+
+  &.active {
+    .bar:nth-child(1) {
+      transform: translateY(8px) rotate(45deg);
+    }
+    .bar:nth-child(2) {
+      opacity: 0;
+    }
+    .bar:nth-child(3) {
+      transform: translateY(-8px) rotate(-45deg);
+    }
+  }
+}
+
+.navbar-collapse {
+  display: flex;
+  flex: 1;
+  justify-content: space-between;
+  align-items: center;
+}
+
+// ============================================
 // RESPONSIVE
 // ============================================
 @media (max-width: 768px) {
   .navbar-container {
-    padding: 0 1rem;
+    padding: 0 1.5rem;
     gap: 1rem;
   }
 
-  .nav-menu {
-    display: none;
+  .menu-toggle {
+    display: flex;
   }
 
-  .logo {
-    font-size: 1.25rem;
+  .navbar-collapse {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    width: 100%;
+    background: white;
+    flex-direction: column;
+    padding: 2rem 1.5rem;
+    gap: 2rem;
+    border-bottom: 1px solid rgba(map.get($palette, dark-blue), 0.08);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.05);
+    max-height: 0;
+    overflow: hidden;
+    opacity: 0;
+    transition: all 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+    pointer-events: none;
+
+    &.show {
+      max-height: 400px;
+      opacity: 1;
+      pointer-events: auto;
+    }
+  }
+
+  .nav-menu {
+    flex-direction: column;
+    align-items: center;
+    gap: 1.5rem;
+    width: 100%;
+    
+    a {
+      font-size: 1.1rem;
+      width: 100%;
+      text-align: center;
+      padding: 0.5rem 0;
+      display: block;
+    }
   }
 
   .nav-actions {
-    gap: 0.5rem;
-  }
+    flex-direction: column;
+    width: 100%;
+    gap: 1rem;
+    align-items: stretch;
 
-  .btn {
-    padding: 0.5rem 1rem;
-    font-size: 0.85rem;
+    .btn {
+      width: 100%;
+      padding: 0.8rem;
+      font-size: 1rem;
+      text-align: center;
+    }
   }
 }
 

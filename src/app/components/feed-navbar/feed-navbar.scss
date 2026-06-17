@@ -44,3 +44,24 @@ $shadow: 0 -4px 20px rgba(0, 0, 0, 0.08);
   background: rgba($primary, 0.12);
   color: $primary;
 }
+
+@media (max-width: 576px) {
+  .feed-navbar {
+    flex-direction: column;
+    gap: 0.75rem;
+    padding: 0.75rem 1rem;
+    align-items: center;
+  }
+
+  .feed-navbar-links {
+    width: 100%;
+    justify-content: space-around;
+    gap: 0.5rem;
+  }
+
+  .feed-link {
+    font-size: 0.85rem;
+    padding: 0.4rem 0.6rem;
+    text-align: center;
+  }
+}

@@ -244,3 +244,34 @@
     transform: scale(1);
   }
 }
+
+@media (max-width: 576px) {
+  .register-legal-container {
+    padding: 1.5rem;
+    border-radius: 12px;
+  }
+  .title {
+    font-size: 1.6rem;
+  }
+  .success-title {
+    font-size: 1.8rem;
+  }
+  .success-message {
+    font-size: 1rem;
+  }
+  .buttons-container {
+    flex-direction: column-reverse;
+    gap: 0.75rem;
+    
+    .btn {
+      width: 100%;
+    }
+    
+    &.single-button {
+      .btn {
+        width: 100%;
+        min-width: 100%;
+      }
+    }
+  }
+}

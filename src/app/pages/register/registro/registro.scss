@@ -236,3 +236,19 @@ $transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
         transform: translateX(0);
     }
 }
+
+@media (max-width: 576px) {
+  .register-container {
+    padding: 1.25rem;
+  }
+  .register-card {
+    padding: 2.25rem 1.5rem;
+    
+    .register-header {
+      margin-bottom: 1.75rem;
+      h2 {
+        font-size: 1.6rem;
+      }
+    }
+  }
+}

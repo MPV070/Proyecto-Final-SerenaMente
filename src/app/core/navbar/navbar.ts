@@ -11,11 +11,20 @@ import { Router, RouterLink } from '@angular/router';
 })
 export class NavbarComponent {
   isLoggedIn: boolean = false;
+  isMobileMenuOpen: boolean = false;
 
   constructor(private router: Router) { }
 
   ngOnInit(): void {
     this.checkLoginStatus();
+  }
+
+  toggleMobileMenu(): void {
+    this.isMobileMenuOpen = !this.isMobileMenuOpen;
+  }
+
+  closeMobileMenu(): void {
+    this.isMobileMenuOpen = false;
   }
 
   checkLoginStatus(): void {

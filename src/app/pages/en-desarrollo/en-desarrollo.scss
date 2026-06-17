@@ -125,3 +125,20 @@
     transform: translateY(0);
   }
 }
+
+@media (max-width: 480px) {
+  .development-container {
+    padding: 1rem;
+  }
+  .development-card {
+    padding: 2.5rem 1.5rem;
+    
+    h1 {
+      font-size: 2.5rem;
+    }
+    
+    h2 {
+      font-size: 1.25rem;
+    }
+  }
+}

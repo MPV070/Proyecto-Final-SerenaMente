@@ -178,3 +178,18 @@
   line-height: 1.4;
   animation: slideUp 0.35s ease-out;
 }
+
+@media (max-width: 576px) {
+  .login-container {
+    padding: 1.25rem;
+  }
+  .login-card {
+    padding: 2.25rem 1.5rem;
+  }
+  .login-header {
+    margin-bottom: 1.75rem;
+    h2 {
+      font-size: 1.6rem;
+    }
+  }
+}
